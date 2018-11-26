@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blog : Liberation Data</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="../../../../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../css/grid.css">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/contact-form.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <script src="../../../../js/jquery.js"></script>
+    <script src="../../../../js/jquery-migrate-1.2.1.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="../../../../js/jquery.mobile.customized.min.js"></script>
+    <script src="../../../../js/wow/wow.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+
+    <script src="../../../../js/modal.js"></script>
+
+
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0"
+                 height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../../../js/html5shiv.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../../../css/ie.css">
+    <![endif]-->
+</head>
+
+<body>
+
+<!--========================================================
+                                                    HEADER
+=========================================================-->
+<header id="header">
+    <div id="stuck_container">
+        <div class="container">
+            <h1>
+                <a href="../../../../index.html"><img src="../../../../images/hawk@84.png" alt="logo"></a>
+                <a href="../../../../index.html">
+                    <div class="liberation">Liberation Data</div>
+                </a>
+            </h1>
+
+            <nav>
+                <ul class="sf-menu">
+                    <li><a href="../../../../index.html">Home<strong></strong></a></li>
+                    <li><a href="../../../../about.html">About<strong></strong></a></li>
+                    <!--<li><a href="services.html">Services<strong></strong></a></li>-->
+                    <li class="current"><a href="../../../../blog.html">Blog<strong></strong></a></li>
+                    <li id="last-li"><a href="../../../../contact.html">Contact<strong></strong></a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</header>
+<!--========================================================
+                                                    CONTENT
+=========================================================-->
+<section id="content">
+
+
+    <div class="box-rock"></div>
+
+    <div class="box-2">
+        <div class="container txt_left">
+            <h2 class="txt_cntr">Rock 'n' Roll Traffic Routing, With Neo4j</h2>
+            <p class="txt_ital txt_cntr">Posted on November 28, 2018 by <a href="#" class="link1">Jasper Blues</a> in <a href="../../../../blog.html" class="link1">Saxeburg Series</a></p>
+
+            <div class="border3">
+            <p>This post is the first of my <strong><a
+                    href="https://twitter.com/search?f=tweets&amp;q=%23doctor-cerulean-liberates-your-data&amp;src=typd"
+                    target="_blank" rel="noopener">#doctor-cerulean-liberates-your-data</a></strong> series, for young
+                entrepreneurs (or the young at heart), in which we’ll learn about Neo4j and have some fun at the same time. How?
+                By building our own Neo4j-powered mobile game.</p>
+            </div>
+
+            <h2 id="Let’s-Begin">Let’s Begin</h2>
+            <div class="border3">
+            <p>Have you ever wondered how apps like Google Maps or Waze provide turn by turn directions and
+                offer the fastest
+                route, as well as respond to changing traffic conditions in realtime?</p>
+            <p>Today I will show you how to use Neo4j for traffic routing, and it will only take a few
+                minutes.</p>
+            <p>As you will soon see, we could pick any city that we like as a case study, however for the sake
+                of this article
+                let us imagine a sprawling nation-state that is part Paris, part Metro Manila and part Coney
+                Island. Are you
+                with me?</p>
+            <p>Such a city could be represented in topographical form like this:</p>
+            <p><img src="https://i.imgur.com/mNEeCZj.jpg" alt="Saxeburg"><br>
+                <em>Saxeburg, c. 1986</em></p>
+            </div>
+            <div class="border3">
+            <h2 id="Doctor-Cerulean">Doctor Cerulean</h2>
+            <p>Towards the task at hand let us also imagine Dr Cerulean, the charismatic founding forefather of
+                our thriving
+                metropolis. Charisma aside, he is unfortunately a calamitously lazy man and one prone to
+                numerous vices at that.
+                Most especially wine, women and song.</p>
+            <p>We are going somewhere with this, but I would ask that you please stretch your imagination <em>just</em>
+                a little
+                more, to accommodate the following notion: On the night before he was due to present an
+                inaugural city charter,
+                our dear Doctor was down in Phoenix sampling the Cactus Juice, which is very good down that way.
+                And
+                unfortunately also lethal on this occasion.</p>
+            </div>
+            <h2 id="The-Last-Day-of-Doctor-Cerulean’s-Life">The Last Day of Doctor Cerulean’s Life</h2>
+            <div class="border3">
+            <p>OK, so here we are on the last day of our city founding father’s last day of life. We will get to
+                the traffic
+                routing in a moment, but I think we better address this matter at least briefly, as it would be
+                disrespectful to brush over, wouldn’t it?</p>
+            <p>Doctor Cerulean commenced his last day, after waking from an hour or two of sleep. He discovered
+                himself in a
+                compromising position, but was otherwise feeling quite fantastic. Violently alive, you could
+                say. The city
+                charter, however was nowhere in site, the task of preparing one having been neglected for months
+                prior.</p>
+            <p>You might think this sounds like the start of a day where things aren’t going to go necessarily
+                all that well,
+                and you’d be right.</p>
+            <p>However, at this point, I can elaborate on some of the soon-to-be departed Doctor’s redeeming
+                qualities. For one,
+                he is deliciously playful. Two, he’s remarkably resourceful and quite inventive to boot.</p>
+            <p>You see, the night prior, there was a fantastic party taking place in the science department of
+                Phoenix’ very
+                party-oriented fledgling university campus. Thus, the Doctor found himself, that morning,
+                regaining some
+                semblance of consciousness drooling onto a Periodic Table of Elements.</p>
+            <p>Having awoken at ten, and due to present the city charter at eleven, our Doctor performed a
+                momentous feat. He
+                gathered up the table of elements, crossed out the carbon; nitrogen; phosphorus; oxygen;
+                sulphur; selenium
+                various noble gasses and so forth until there was nothing left but what? Exactly: <em>metal</em>.
+                On top of
+                this, he scrawled, in black marker pen: “The People Will Rock!”.</p>
+            <p>And so, this is the document he presented in lieu of an actual city charter, in front of the
+                assembled town hall,
+                and those were in fact the last words he uttered. They were spoken with enthusiasm and with arm
+                held aloft,
+                fingers formed into a pair of horns.</p>
+            <p>He then promptly collapsed and died, on stage, making quite a show of it.</p>
+            </div>
+            <div class="border3">
+            <p>The doctors (actual qualified ones) wrote “general congestion in all systems”, which was a polite
+                way of saying
+                “excess of Cactus Juice”, back in those days.</p>
+            </div>
+            <h2 id="Don’t-Cry">Don’t Cry</h2>
+            <div class="border3">
+            <p>Finally, here ready to commence our traffic routing exercise! Woo hoo! However, hmmmm . . . now
+                I’m a little
+                worried about you.</p>
+            <p>Maybe this story of Doctor Cerulean, has moved you. Rocked your emotional core, so to speak.
+                Perhaps even to the
+                point of overcoming your powers of cognition. The thing is, you are going to need those.</p>
+            <p>Therefore I would say to you this: Do not shed a tear! The good Doctor’s statue stands aloft in
+                Intramuros to
+                this day. He is looking very dapper, albeit simultaneously a little worse for wear. His arm is
+                raised, just as
+                it was in those last moments, in an ever enduring veneration of metal and hard-living.</p>
+            <p>Meanwhile Saxeburg is thriving, it really is. And I tell you <em>what</em>, the people certainly
+                did rock! Every
+                neighbourhood adopted an elemental metal, enshrined it with a stage and auditorium with standing
+                area for
+                thousands. There are full light-show capabilities (on days that the town’s electricity supply is
+                functioning),
+                you name it.</p>
+            </div>
+            <h2 id="Moongirl-and-the-Bullhorns">Moongirl and the Bullhorns</h2>
+            <div class="border3">
+            <p>Therefore, without further adieu I would like to welcome you to present-day Saxeburg, and
+                introduce you to <em>Moongirl
+                    and the Bullhorns!</em> (Moongirl, please take a bow).</p>
+            <p>Moongirl is the nubile lead singer of Saxeburg’s premier Rock and Roll show and the Bullhorns are
+                the tightest
+                backing band in the business. A dashing bunch of brutes too.</p>
+            <p>Moongirl and her band put on a show every night of the year, and they love what they do. There is
+                only one
+                problem.</p>
+            <p>The traffic in Saxeburg is bloody <em>terrible</em>!</p>
+            </div>
+            <h2 id="Let’s-Begin-This-Time-For-Real">Let’s Begin, This Time For Real</h2>
+            <div class="border3">
+            <p>OK, so Moongirl has been spending the day at the beach, with her boys. Meanwhile she is
+                head-lining at the Grand
+                Théâtre de Rabat in NYC tonight. Let’s see if we can get her to the gig on time.</p>
+            <p>I’m assuming you have an instance of Neo4j running on your machine. If you don’t <a
+                    href="https://neo4j.com/developer/get-started/" target="_blank" rel="noopener">go google
+                that</a> and we’ll
+                regroup here.</p>
+            </div>
+
+
+            <h2 id="Data-Ingestion">Data Ingestion</h2>
+            <div class="border3">
+            <p>Open your browser at <a class="link1" href="http://localhost:7474/browser/" target="_blank" rel="noopener">localhost:7474</a>
+                and run <a class="link1" href="https://gist.github.com/jasperblues/7a6e774090c9ef0f18c44920b48b6b23"
+                           target="_blank"
+                           rel="noopener">this statement</a>.</p>
+            <p>Now run:</p>
+            <pre><code class="cypher hljs">match (n) <span class="hljs-built_in">return</span> n;
+</code></pre>
+            <p>This yields a graph that will look something like this:</p>
+            <p><img src="https://i.imgur.com/I2xuxLK.png" alt="saxeburg-graph"></p>
+            <p>The first thing that you might notice is that it looks nothing like our topographical map. So
+                what gives?</p>
+            </div>
+
+
+            <h2 id="Graph-Theory">Graph Theory</h2>
+            <div class="border3">
+            <p>Well, you probably know that graph databases are based on a branch of mathematics, in the field
+                of combinatorics called graph theory; that in fact graph theory itself emerged from an exercise in path-finding:</p>
+            <p>Euler’s solution of the <a href="https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg"
+                                          target="_blank"
+                                          rel="noopener">Königsberg bridge problem</a> is considered to be the
+                first theorem of graph theory and the first true proof in the theory of networks. Additionally Euler recognised
+                that the key information was the number of bridges and the list of their endpoints rather than their exact positions.</p>
+            <p>So there’s that.</p>
+            </div>
+
+            <h2 id="More-Graph-Theory">More Graph Theory</h2>
+
+            <div class="border3">
+            <p>But it is quite a rabbit hole, actually.</p>
+            <p>While combinatorial problems have been considered since antiquity and graph theory emerged some
+                three hundred
+                years ago, network structures remain an <a href="https://arxiv.org/pdf/1710.01144.pdf"
+                                                           target="_blank"
+                                                           rel="noopener">area of research interest</a> to this
+                day.</p>
+            <p>Meanwhile the practical ramifications are endless. Some examples of applied graph theory are:</p>
+            <ul class="bulletList">
+                <li>Recommendation engines</li>
+                <li>Root cause analysis</li>
+                <li>Fraud Detection</li>
+            </ul>
+            <p>Something that makes Neo4j so compelling is that it puts graph algorithms for real-time
+                transactional data at
+                your fingertips.</p>
+            <p>In fact later in this series we will be applying graph theory to solve a crime. Or maybe
+                (shocking thought) to
+                get away with one. Which will it be?</p>
+            <p>Of course this is a suspenseful blog series so you’ll have to wait. In the meantime our sassy
+                urbanite is
+                starting to get tetchy about being late for her gig, so we’d better press on!</p>
+            </div>
+
+
+            <h2 id="Bidirectional-Relationships">Bidirectional Relationships</h2>
+            <div class="border3">
+            <p>Something else that you might notice is that the <code>HAS_ROUTE</code> relationships are
+                directional - we can
+                see this on the visualisation, because, well, they have arrows on one end.</p>
+            <p>However, we have actually modelled Saxeburg as an undirected graph. <em>But</em>, all
+                relationships in Neo4j are
+                <em>directed</em>.</p>
+            <p>So what is happening here? Well, the CYPHER query language allows us to ignore direction when it
+                is not relevant.
+                You can see an example of that on the merge statements to create the <code>HAS_ROUTE</code>
+                relationships, and
+                we’ll employ it again in a moment.</p>
+            </div>
+
+
+            <h2 id="Exploring-Routes">Exploring Routes</h2>
+            <div class="border3">
+            <p>Let’s run the following CYPHER:</p>
+            <pre><code class="cypher hljs"><span class="hljs-selector-tag">MATCH</span> (<span
+                    class="hljs-selector-tag">n</span><span class="hljs-selector-pseudo">:Metro)-</span><span
+                    class="hljs-selector-attr">[r:HAS_ROUTE]</span><span
+                    class="hljs-selector-tag">-</span>(<span
+                    class="hljs-selector-tag">m</span><span class="hljs-selector-pseudo">:Metro)</span>
+<span class="hljs-selector-tag">RETURN</span> <span class="hljs-selector-tag">n</span><span class="hljs-selector-class">.name</span>, <span
+                        class="hljs-selector-tag">r</span><span class="hljs-selector-class">.travelTime</span>, <span
+                        class="hljs-selector-tag">m</span><span class="hljs-selector-class">.name</span>
+  <span class="hljs-selector-tag">LIMIT</span> 5;
+</code></pre>
+            <p>This yields the following results:</p>
+            <p><img src="https://i.imgur.com/S7rCAAa.png" alt=""></p>
+            <p>We can see that each <code>Metro</code> has a route to various other metros, and that the average
+                travel time has
+                been recorded.</p>
+            </div>
+
+
+            <h2 id="Most-Expedient-Route">Most Expedient Route</h2>
+            <div class="border3">
+            <p>Using the information at hand, we can now easily find the most expedient route from Cavite Island
+                to NYC:</p>
+            <pre><code class="cypher hljs">MATCH paths = (a:Metro {name: <span
+                    class="hljs-string">'Cavite Island'</span>})-[:HAS_ROUTE*<span
+                    class="hljs-number">1.</span><span class="hljs-number">.6</span>]-(b:Metro {name: <span
+                    class="hljs-string">'NYC'</span>})
+WITH paths, relationships(paths) <span class="hljs-keyword">AS</span> rels
+UNWIND rels <span class="hljs-keyword">AS</span> rel
+WITH paths, collect(rel.travelTime) <span class="hljs-keyword">AS</span> streets, sum(rel.travelTime) <span
+                        class="hljs-keyword">AS</span> travelTime
+<span class="hljs-keyword">RETURN</span> extract (n IN nodes(paths) | n.name) <span class="hljs-keyword">AS</span> metros, streets, travelTime
+  ORDER BY travelTime;
+</code></pre>
+            <p><img src="https://i.imgur.com/KJzt2T2.png" alt=""></p>
+            <p>This query tells us the following:</p>
+            <ul class="bulletList">
+                <li>Moongirl will get to her gig on time - she can reach NYC in 26 minutes.</li>
+                <li>She can wave at Doctor Cerulean’s statue on the way - the fastest route is via Intramuros
+                    and China Town.
+                </li>
+            </ul>
+            </div>
+
+
+
+            <h2 id="Road-Closures">Road Closures</h2>
+            <div class="border3">
+            <p>Let’s expand our model to handle road closures.</p>
+            <pre><code class="cypher hljs">MATCH (<span class="hljs-symbol">:Metro</span>)-[<span
+                    class="hljs-symbol">r:</span>HAS_ROUTE]-(<span
+                    class="hljs-symbol">:Metro</span>)
+SET r.status = <span class="hljs-string">'ACTIVE'</span>;
+</code></pre>
+            <p>The citizens of Saxeburg decide to throw their television sets out of their windows. It causes
+                road closures
+                between China Town and Ermita, and also between Intramuros and China Town.</p>
+            <pre><code class="cypher hljs">MATCH (<span class="hljs-symbol">:Metro</span> {<span
+                    class="hljs-symbol">name:</span><span class="hljs-string">'China Town'</span>})-[<span
+                    class="hljs-symbol">r1:</span>HAS_ROUTE]-(<span
+                    class="hljs-symbol">m:</span>Metro {<span class="hljs-symbol">name:</span> <span
+                    class="hljs-string">'Ermita'</span>})
+WITH r1
+MATCH (<span class="hljs-symbol">:Metro</span> {<span class="hljs-symbol">name:</span><span class="hljs-string">'Intramuros'</span>})-[<span
+                        class="hljs-symbol">r2:</span>HAS_ROUTE]-(<span
+                        class="hljs-symbol">m:</span>Metro {<span
+                        class="hljs-symbol">name:</span> <span class="hljs-string">'China Town'</span>})
+SET r1.status = <span class="hljs-string">'CLOSED'</span>
+SET r2.status = <span class="hljs-string">'CLOSED'</span>;
+</code></pre>
+            <p>Now we can extend our initial query as follows:</p>
+            <pre><code class="cypher hljs">MATCH paths = (a:Metro {name: <span
+                    class="hljs-string">'Cavite Island'</span>})-[:HAS_ROUTE*<span
+                    class="hljs-number">1.</span><span class="hljs-number">.6</span>]-(b:Metro {name: <span
+                    class="hljs-string">'NYC'</span>})
+WITH paths, relationships(paths) <span class="hljs-keyword">AS</span> rels
+	where all(rel IN rels WHERE rel.status = <span class="hljs-string">'ACTIVE'</span>)
+UNWIND rels <span class="hljs-keyword">AS</span> rel
+WITH paths, collect(rel.travelTime) <span class="hljs-keyword">AS</span> streets, sum(rel.travelTime) <span
+                        class="hljs-keyword">AS</span> travelTime
+<span class="hljs-keyword">RETURN</span> extract (n IN nodes(paths) | n.name) <span class="hljs-keyword">AS</span> metros, streets, travelTime
+  ORDER BY travelTime;
+</code></pre>
+            <p>We can see that:</p>
+            <ul class="bulletList">
+                <li>Travel time increases 29.6 minutes</li>
+                <li>The best route is now via Intramuros, St Germain and China Town.</li>
+            </ul>
+            </div>
+
+            <h2 id="Conclusion">Conclusion</h2>
+            <div class="border3">
+            <p>Today we learned how to use Neo4j to perform traffic routing.</p>
+            <p>There is a lot more that we could do, however I would like <em>you</em> to think about it, and
+                see where it leads
+                you. How would you extend the model? Maybe handling delays? Turn by turn directions? What about
+                performance
+                concerns with much larger datasets?</p>
+            <p>Have a try for yourself and tweet your discoveries to <strong><a
+                    href="https://twitter.com/doctor_cerulean"
+                    target="_blank" rel="noopener">@doctor_cerulean</a></strong>
+                hashtag <strong><a
+                        href="https://twitter.com/search?f=tweets&amp;q=%23doctor-cerulean-liberates-your-data&amp;src=typd"
+                        target="_blank" rel="noopener">#doctor-cerulean-liberates-your-data</a></strong>.</p>
+            <p>We also learned today that:</p>
+            <ul class="bulletList">
+                <li>Neo4j is accessible. We can analyse network structures and solve real-world problems,
+                    without necessarily
+                    needing to know a lot about graph theory or combinatorics.
+                </li>
+                <li>Network structures have tremendous <em>plasticity</em>. We can enhance our model to
+                    encompass evolving
+                    requirements. And because Neo4j is transactional we can be assured of data consistency for
+                    large-scale,
+                    fluid networks. This is a powerful combination. In fact it makes Neo4j compelling for AI
+                    applications. We
+                    will explore that, with Moongirl, in a future post.
+                </li>
+            </ul>
+            <p>Please stay tuned for the next instalment. I hope that you enjoyed this one! If you did, why not
+                tell your friends about the fun that can be had when <strong><a
+                        href="https://twitter.com/search?f=tweets&amp;q=%23doctor-cerulean-liberates-your-data&amp;src=typd"
+                        target="_blank" rel="noopener">#doctor-cerulean-liberates-your-data</a></strong>.</p>
+            <p>Thanks a lot! <img alt=":metal:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/metal.png" title=":metal:"></p>
+            </div>
+
+            <div dir="ltr" class="resize-sensor"
+                 style="position: absolute; left: -10px; top: -10px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                <div class="resize-sensor-expand"
+                     style="position: absolute; left: -10px; top: -10px; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                    <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 100000px; height: 100000px;"></div>
+                </div>
+                <div class="resize-sensor-shrink"
+                     style="position: absolute; left: -10px; top: -10px; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                    <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container txt_cntr">
+        <h2 class="v2">Comments</h2>
+
+        <div id="disqus_thread" class="border3"></div>
+        <script>
+
+
+        var disqus_config = function () {
+        this.page.url = "saxeburg-series/2018/11/28/rock-n-roll-traffic-routing.html";
+        this.page.identifier = "123";
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://liberation-data-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    <div class="container txt_cntr">
+        <h2 class="v2">Get in touch</h2>
+
+        <div class="row">
+            <div class="grid_10 preffix_1">
+                <p class="marTop3">We'd love to hear from you! Feel free to reach out on any of the channels
+                    below.</p>
+
+                <div class="row">
+                    <div class="grid_3">
+                        <img src="../../../../images/page1_icon4.png" alt="" class="no_resize img2">
+                        <p class="txt1"><a href="mailto:info@liberation-data.com">info@liberation-data.com</a>
+                        </p>
+                    </div>
+
+                    <div class="grid_4">
+                        <img src="../../../../images/page1_icon5.png" alt="" class="no_resize img2">
+                        <p class="txt1">801 Glenferrie Road Hawthorn, VIC</p>
+                    </div>
+
+                    <div class="grid_3">
+                        <img src="../../../../images/page1_icon6.png" alt="" class="no_resize img2">
+                        <p class="txt1"><a href="tel:+61 3 9028 7328">+61 3 9028 7328</a></p>
+                    </div>
+                </div>
+
+
+                <form id="contact-form" class="txt_left"
+                      action="https://api.formbucket.com/f/buk_EHPdlud2Cfnn1keOgmy63w6c" method="post">
+                    <div class="contact-form-loader"></div>
+                    <fieldset>
+                        <div class="row">
+                            <div class="grid_5">
+                                <label class="name">
+                                    <input type="text" name="name" placeholder="Name:" value=""
+                                           data-constraints="@Required @JustLetters"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid name.</span>
+                                </label>
+
+                                <label class="email">
+                                    <input type="text" name="email" placeholder="E-mail:" value=""
+                                           data-constraints="@Required @Email"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid email.</span>
+                                </label>
+                                <label class="subject">
+                                    <input type="text" name="phone" placeholder="Subject:" value=""
+                                           data-constraints="@Required"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid phone.</span>
+                                </label>
+                            </div>
+
+                            <div class="grid_5">
+                                <label class="message">
+                                            <textarea name="message" placeholder="Message:"
+                                                      data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*The message is too short.</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="btns">
+                            <!-- <a href="#" class="more_btn" data-type="reset">Clear</a> -->
+                            <a href="#" class="more_btn" data-type="submit" id="submit" type="submit"
+                               onclick="submit()">Submit</a>
+                        </div>
+                    </fieldset>
+                    <div class="modal fade response-message">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    You message has been sent! We will be in touch soon.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+</section>
+
+
+<!--========================================================
+                                                    FOOTER
+=========================================================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12">
+                <p class="txt_priv wow fadeInLeft">Liberation Data (c) <span id="copyright-year"></span> | <a
+                        href="../../../../privacy.html">Privacy Policy</a><br><!--{%FOOTER_LINK} -->
+                <ul class="social-icons txt_priv wow fadeInLeft">
+                    <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+                    <li><a href="https://www.linkedin.com/company/liberation-data"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a href="https://twitter.com/liberation_data"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="http://github.com/liberation-data"><i class="fa fa-github"></i></a></li>
+                    <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/script.js"></script>
+
+<!--[if (gt IE 9)|!(IE)]><!-->
+<script src="js/jquery.mobile.customized.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Initialize the gallery
+        $('.magnifier2').touchTouch();
+
+    });
+
+</script>
+
+
+</body>
+</html>
