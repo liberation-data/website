@@ -18,6 +18,8 @@
 		$(document).ready(function () {
 			if ($('html').hasClass('desktop')) {
 				new WOW().init();
+                $('#wwd2').css({"height":$('#wwd1').height()});
+                $('#wwd3').css({"height":$('#wwd1').height()});
 			}
 		});
 	</script>
@@ -89,7 +91,7 @@
 						<div class="border1">
 							<img src="images/icon-consulting.png" alt="" class="no_resize">
 							<h3>Consulting</h3>
-							<div>
+							<div id="wwd1">
 								<p>We partner with firms at all stages of the development cycle to ensure that their data strategy is aligned with product vision.</p>
 								<p>You’re in good hands. We have guided startups from inception through to successful acquisition and beyond. During the course we have overseen successful data modelling, ingestion, performance tuning, production configuration and technical troubleshooting and many other challenges.</p>
 							</div>
@@ -101,9 +103,9 @@
 						<div class="border1">
 							<img src="images/training.png" alt="" class="no_resize">
 							<h3>Training</h3>
-							<div>
+							<div id="wwd2">
 								<p>We firmly believe that training should be not only informative, but also also fun, social and entertaining.</p>
-								<p>We deliver on-site as well as scheduled public training courses around the world. Our trainers are industry veterans and experts in their fields, not to mention genuinely fun and caring people. This makes customizing courseware to meet specific needs of attendees on the day a snap for them.<br/><br/></p>
+								<p>We deliver on-site as well as scheduled public training courses around the world. Our trainers are industry veterans and experts in their fields, not to mention genuinely fun and caring people. This makes customizing courseware to meet specific needs of attendees on the day a snap for them.</p>
 							</div>
 							<a href="contact.html" class="more_btn">more</a>
 						</div>
@@ -113,7 +115,7 @@
 						<div class="border1">
 							<img src="images/icon-development.png" alt="" class="no_resize">
 							<h3>Development</h3>
-							<div>
+							<div id="wwd3">
 								<p>We know we are fortunate to do work that we're passionate about. Therefore, we give back by performing software development on behalf of the open-source graph database and network science communities.</p>
 								<p>Our founder is an open-source and startup veteran who has successfully launched products that have are employed by thousands of developers, and included in products that are used by millions.</p>
 							</div>
