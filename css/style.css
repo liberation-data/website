@@ -1032,6 +1032,9 @@ pre {
   padding-left: 20px;
   margin: 40px 20px 20px 10px;
   color: #232323;
+  overflow: auto;
+  /*display: inline;*/
+  /*max-width: auto;*/
 }
 
 .emoji {
