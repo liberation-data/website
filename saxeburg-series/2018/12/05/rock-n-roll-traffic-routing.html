@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blog : Liberation Data</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="../../../../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../css/grid.css">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/contact-form.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/critical.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/app.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/universal.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/structure.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/content.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/page.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/docs.css" media="all"/>
+
+    <script src="../../../../js/jquery.js"></script>
+    <script src="../../../../js/jquery-migrate-1.2.1.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="../../../../js/jquery.mobile.customized.min.js"></script>
+    <script src="../../../../js/wow/wow.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+
+    <script src="../../../../js/modal.js"></script>
+
+
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0"
+                 height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../../../js/html5shiv.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../../../css/ie.css">
+    <![endif]-->
+</head>
+
+<body>
+
+<!--========================================================
+                                                    HEADER
+=========================================================-->
+<header id="header">
+    <div id="stuck_container">
+        <div class="container">
+            <h1>
+                <a href="../../../../index.html"><img src="../../../../images/hawk@84.png" alt="logo"></a>
+                <a href="../../../../index.html">
+                    <div class="liberation">Liberation Data</div>
+                </a>
+            </h1>
+
+            <nav>
+                <ul class="sf-menu">
+                    <li><a href="../../../../index.html">Home<strong></strong></a></li>
+                    <li><a href="../../../../about.html">About<strong></strong></a></li>
+                    <!--<li><a href="services.html">Services<strong></strong></a></li>-->
+                    <li class="current"><a href="../../../../blog.html">Blog<strong></strong></a></li>
+                    <li id="last-li"><a href="../../../../contact.html">Contact<strong></strong></a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</header>
+<!--========================================================
+                                                    CONTENT
+=========================================================-->
+<section id="content">
+
+
+    <div class="box-rock2"></div>
+
+    <div class="box-2">
+        <div class="container txt_left">
+            <h2 class="txt_cntr">Rock 'n' Roll Traffic Routing, With Neo4j, Part 2</h2>
+            <p class="txt_ital txt_cntr">Posted on November 28, 2018 by <a href="../../../../blog.html" class="link1">Jasper
+                Blues</a> in <a href="../../../../blog.html" class="link1">Saxeburg Series</a>.</p>
+            <p class="txt_cntr">
+                <a href="https://twitter.com/intent/tweet?text=I%27m+reading+%27Rock+%27n%27+Roll+Traffic+Routing%2C+Part+2%27%2C+in+the+%23saxeburg-series+of+%23neo4j+tutorials+by+%40doctor_cerulean%21+&ref_src=twsrc%5Etfw"
+                   class="twitter-mention-button" data-show-count="false">Tweet!</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </p>
+
+            <div id="doc" class="markdown-body container-fluid comment-enabled" style="position: relative;">
+                <div class="border3">
+                    <p>This post is the second of my <strong><a
+                            href="https://twitter.com/search?f=tweets&amp;q=saxeburg%20series&amp;src=typd"
+                            target="_blank"
+                            rel="noopener">#saxeburg-series</a></strong>, for young entrepreneurs (or the young at
+                        heart), in which
+                        we’ll learn about Neo4j and have some fun at the same time. How? By building our own
+                        Neo4j-powered
+                        mobile game.</p>
+                </div>
+                <h2 id="The-Story-Continues-But-Without-a-Story">The Story Continues</h2>
+                <div class="border3">
+                    <p>I did plan on each of the Saxeburg Series having an accompanying short story, with Moongirl,
+                        and some new folks, who you will meet soon, just like we had in
+                        the
+                        <a href="https://liberation-data.com/saxeburg-series/2018/11/28/rock-n-roll-traffic-routing.html"
+                           class="link1"
+                           target="_blank" rel="noopener">first instalment</a>.</p>
+                    <p>Because, let’s face it, what could be more awesome than exploring
+                        <a href="https://en.wikipedia.org/wiki/Category:Graph_algorithms" target="_blank" class="link1"
+                           rel="noopener">graph algorithms</a> aided by a menagerie of colorful albeit possibly
+                        criminally minded side-kicks?
+                        Especially if we place our beloved fictional friends into a city that is so dysfunctional,
+                        chaotic and downright dangerous that their very survival (wait, he survived!?) depends on the
+                        formulas
+                        we employ on their behalf.</p>
+                    <p>However, I’ve been working on a new open-source framework for you. Therefore I didn’t have the
+                        time to prepare a new chapter this week. Tell you what though:
+                        <em>You</em> take the leading role for this instalment, and I’ll have a new chapter for you
+                        soon, okay?</p>
+                </div>
+                <h2 id="LET’S-BEGIN">LET’S BEGIN</h2>
+                <div class="border3">
+                    <p>In the <a
+                            href="https://liberation-data.com/saxeburg-series/2018/11/28/rock-n-roll-traffic-routing.html"
+                            target="_blank" class="link1" rel="noopener">last post</a> we learned how to perform traffic
+                        routing with
+                        Neo4j.</p>
+                    <p>We discovered that Neo4j is accessible. With nothing more than a graph model, <a
+                            href="https://neo4j.com/developer/cypher-query-language/" target="_blank" class="link1"
+                            rel="noopener">CYPHER</a> and a little creative thinking we were able to solve a real-world
+                        problem.</p>
+                    <p>We also observed that Neo4j provides us with a <a
+                            href="https://neo4j.com/developer/graph-database/#property-graph" target="_blank"
+                            class="link1"
+                            rel="noopener">directed property graph model</a>. This gave us a lot of flexibility. Having
+                        solved the question “What is the most expedient route between two points in a city?” we
+                        immediately
+                        asked a new one. (By the way, don’t you find that this is exactly what happens in the real
+                        world?
+                        Business requirements <em>evolve</em>). With a few tweaks to our model, we were able to re-route
+                        traffic in the event of a road closure.</p>
+                    <p>Today we’ll optimize our solution with the help of two libraries:</p>
+                    <ul class="bulletList">
+                        <li><a href="https://github.com/neo4j-contrib/neo4j-apoc-procedures" target="_blank"
+                               class="link1"
+                               rel="noopener">Neo4j
+                            APOC</a>. APOC is a bonanza of useful procedures and functions. This library is developed,
+                            maintained and supported by a very active community. Progress is rapid, and sometimes subject to change.
+                        </li>
+                        <li><a href="https://github.com/neo4j-contrib/neo4j-graph-algorithms" target="_blank"
+                               class="link1"
+                               rel="noopener">Neo4j Graph Algorithms</a>. Whereas APOC contains graph algorithms along
+                            with utilities and functions, this library, as the name suggests is just algorithms.
+                            Its maintained and officially supported by Neo4j, with participation from the community.
+                        </li>
+                    </ul>
+                    <p>
+                    <p>We'll be accessing the libraries using a feature of Neo4j called <a class="link1" target="_blank"
+                                                                                           href="https://neo4j.com/docs/java-reference/current/extending-neo4j/procedures/">
+                        stored procedures</a>. Stored procedures give us a way to call, from CYPHER, routines that run on the graph.
+                        There's a plethora of interesting open-source routines. It is also fun and easy to write your
+                        own. I
+                        will show you how to do that in a future post.
+                    </p></p>
+                    <p>Just one of those libraries above would in fact, be enough to perform optimization today.
+                        However we’ll be
+                        making good use of both in subsequent posts. They’re both pretty interesting too, so let’s read
+                        on.</p>
+                </div>
+                <h2 id="Installation">Installation</h2>
+                <div class="border3">
+                    <p>The first task at hand will be to install the aforementioned routines. I’m not sure when you’ll
+                        be
+                        reading this, but today the current version of Neo4j is 3.5.0. Here’s a link for <a
+                                class="link1"
+                                href="https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.5.0.0/apoc-3.5.0.0-all.jar"
+                                target="_blank" rel="noopener">Neo4j-apoc-3.5.0-beta01</a> and
+                        <a class="link1"
+                           href="https://github.com/neo4j-contrib/neo4j-graph-algorithms/releases/download/3.5.0.1/graph-algorithms-algo-3.5.0.1.jar"
+                           target="_blank" rel="noopener">version 3.5.0.1 of graph algorithms</a>.</p>
+                    <p>Be sure to download the version that matches your Neo4j version - this is important - then copy
+                        the
+                        jar files into your Neo4j install’s plugins directory.</p>
+                    <p>Now we can test that the procedures were correctly installed:</p>
+                    <pre><code>call dbms.procedures()
+</code></pre>
+                    <br/>
+                    <p><img src="https://i.imgur.com/3OBqF6Q.png" alt="Procedure Listing After Installation"></p>
+                    <p><em>After installation, you’ll see the <code>algo.*</code> and <code>apoc.*</code> procedures
+                        listed.</em></p>
+                </div>
+                <h2 id="Granting-Access">Granting Access</h2>
+                <div class="border3">
+                    <p>We've still got one steop. Before we can use the procedures, we need to grant execution privileges to run inside Neoj. Edit
+                        your
+                        <code>neo4j.conf</code> file, adding the following line:</p>
+                    <pre><code>dbms.security.procedures.unrestricted=algo.*,apoc.*
+</code></pre>
+                    <p>We granted access to all procedures in each library. If we wished, we could be more
+                        specific.</p>
+                </div>
+                <h2 id="Now-Welcome-Back-to-Saxeburg">Welcome Back to Saxeburg</h2>
+                <div class="border3">
+                    <p>Its good to have you back!</p>
+                    <p>You awaken after a fitful night’s sleep in some nondescript hotel in Pigalle. The driver wanted
+                        to
+                        take you to Red Light, but you you insisted on the more civilized North-east quarter.</p>
+                    <p>Nonetheless, it seems <em>every</em> neighbourhood in Saxeburg raises their red lights come
+                        nightfall.
+                        In fact, one shone, like a tainted moonbeam, from across the street through your hotel-room
+                        window, bereft of
+                        curtains, as it was. Barely after your eyes had closed it crept like tendrils through shuttered
+                        lids
+                        and sparked the technicolors of your mind. Lurid dreams followed. Such fantasies leave you nary
+                        rested, thus, the morning sun came as a shock, seemingly moments later. Truth be told, you
+                        wouldn’t
+                        have minded staying in your dream a little longer, and yet now daylight beckons.</p>
+                </div>
+                <h2 id="Coffee">Coffee</h2>
+                <div class="border3">
+                    <p>Coffee fixes everything. And the coffee is good, surprisingly good!</p>
+                    <p>Outside, eleven floors below, the world’s most unlikely urban eco-system hums, grinds and teems
+                        with
+                        life. The sidewalks are full. People spill onto the road. Traffic overflows onto the crumbling,
+                        tree-lined pavement. No space is wasted. Hawkers have set up what seems to be the world’s most
+                        popular street-food stall on a traffic-island. The smoke from their grill wafts and mixes with
+                        that
+                        belched by a packed ten peso passenger jeep. Said jeep hurtles past, then slams on the brakes,
+                        with
+                        a squeal.</p>
+                    <p>Meanwhile, at the demolition site next door, stray dogs are playing a game of chase, leaping and
+                        tumbling among piles of concrete debris. Atop one: a life-sized, smiling statue of Buddha in
+                        pock-marked golden plastic. Suddenly, two dogs and Buddha collide, then all three are tumbling
+                        down
+                        the rubble-side. Buddha’s face is alight, as though laughing, but the dogs don’t seem to notice.
+                        They too are absorbed in the present moment, in their game.</p>
+                </div>
+                <h2 id="Stop-Peering-Out-The-Window">Stop Peering Out The Window</h2>
+                <div class="border3">
+                    <p>Hey! Come on, finish your coffee. We’ve got work to do!</p>
+                </div>
+                <div class="border3">
+                    <p>Showered, and dressed for the day, you’re greeted out of your hotel-room door by dim,
+                        flickering lights, in a windowless elevator well.
+                        The floor is scuffed. An ancient lounge that sits on the opposite side of the elevator doors is
+                        flanked by two pot plants. Although plastic, they display drooping, thirsty leaves that seem to
+                        be
+                        pushing the limits of survival.</p>
+                    <p>You wonder at the special kind of neglect it must take to kill a plastic pot plant! Probably the
+                        kind
+                        that is comfortable to scrawl “Out of Service” using what appears to be red lipstick on a piece
+                        scrap paper. Undoubtably the type that would then stick it to the elevator door with spent
+                        chewing
+                        gum.</p>
+                    <p>At least the air-con is still working. It is attacking the fecund heat, keeping it at bay with an
+                        acrid smelling air that is two parts squalid and one part you-don’t-want-to-know.</p>
+                    <p>You reach the lobby after an eleven floor stair descent. Behind the counter, a beautiful human
+                        with
+                        remarkably androgynous features and a dashing red uniform greets you with a heartfelt “Good
+                        Morning!”. That sing-song intonation. Damn, you love the Saxeburgian accent.</p>
+                    <p>You feel a little awkward though, when you ask “How do you prefer to be addressed?”.</p>
+                    <p>There is no sign of offence taken in the answer. “I prefer she”, she laughs warmly, and hands
+                        you
+                        a brochure (Moongirl and the Bullhorns Tour Dates) along with a map of Saxeburg.</p>
+                    <p>You’re not wearing your mixed-reality goggles, and so “Actual paper!”, you think to yourself,
+                        “How
+                        quaint!”</p>
+                </div>
+                <h2 id="Orienteering">Orienteering</h2>
+                <div class="border3">
+                    <p>Let’s reorient ourselves and take a little squiz at our map:</p>
+                    <p><img src="https://i.imgur.com/mNEeCZj.jpg" alt="Saxeburg"><br>
+                        <em>Saxeburg, c. 1986</em></p>
+                    <p>Sheesh, it seems this map is from 1986! But we’ve got all the information we need: What I’m
+                        seeing is
+                        that</p>
+                    <ul class="bulletList">
+                        <li>There are neighbourhoods. We are in Pigalle.</li>
+                        <li>There are routes between each of them, neighbourhoods, that is.</li>
+                        <li>Each route has an associated travel time or <em>cost</em>.</li>
+                    </ul>
+                    <p>Am I right? If that is the case, then we what we are dealing with here is a <em><a class="link1"
+                                                                                                          href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Weighted_graph"
+                                                                                                          target="_blank"
+                                                                                                          rel="noopener">weighted
+                        graph</a></em>.</p>
+                </div>
+                <h2 id="What-is-a-weighted-graph">What is a weighted graph?</h2>
+                <div class="border3">
+                    <p>As we learned last week, graph structures have been considered since antiquity, with path-finding
+                        being a classical application thereof.</p>
+                    <p>Not long after <a class="link1" href="https://en.wikipedia.org/wiki/Leonhard_Euler"
+                                         target="_blank"
+                                         rel="noopener">Euler</a>
+                        came up with the <a class="link1"
+                                            href="https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg"
+                                            target="_blank" rel="noopener">first known graph</a>, they started to
+                        develop
+                        variants applicable to different avenues of exploration. For example, last week we saw that a
+                        graph
+                        can be directed or undirected.</p>
+                    <p>A weighted graph, then, is a graph in which each edge is given a numerical value. These numbers
+                        are
+                        usually taken to be positive. The value that is attached to an edge is what gives the edge its
+                        weight. The weight can represent cost, distance, throughput or some other property.</p>
+                    <p><img src="https://i.imgur.com/PFza8E5.png" style="max-width: 40.0em;" alt="Weighted Graph"><br>
+                        <em>A weighted graph.</em></p>
+                </div>
+                <h2 id="Neo4j’s-Versatility">Property Graph Model vs Weighted Graph</h2>
+                <div class="border3">
+                    <p>Once again, we see that Neo4j’s property graph model is pretty
+                        versatile. Last week we explored how we can model graphs in which the relationships are
+                        bidirectional or undirected, even though, under the hood, all Neo4j relationship are directed.
+                        Do
+                        you remember?</p>
+                    <p>Neo4j can happily serve as a weighted graph model too. There are various
+                        algorithms that deal with weighted graphs, probably the most famous of which is
+                        <a class="link1" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+                           target="_blank" rel="noopener">Djikstra’s</a>.
+                        That's what we'll use for routing today.</p>
+                </div>
+                <h2 id="Djikstra’s-Algorithm">Djikstra’s Algorithm</h2>
+                <div class="border3">
+                    <p>Dijkstra came up with his algorithm in 1956, although it wasn’t published until three years
+                        later. At
+                        the time, he was trying to come up with something to show off the new <a
+                                class="link1" href="http://www-set.win.tue.nl/UnsungHeroes/machines/armac.html"
+                                target="_blank"
+                                rel="noopener">ARMAC</a> mainframes. Bear in mind that this was the dawn of the
+                        electronic
+                        computing age. One of the challenges was to find a problem and solution that people not
+                        familiar with computing would be able to understand. Thus he designed a solution for finding
+                        the most expedient route between two points in a road network.
+                    </p>
+                    <p>Perhaps it is a little ironic, then. Although he wanted the algorithm to be accessible for the
+                        layperson, budding computer scientists find it one of the more intimidating algorithms to
+                        grasp.</p>
+                    <p>Here’s what the man himself had to say.</p>
+                </div>
+                <h2 id="In-His-Own-Words">In His Own Words</h2>
+                <div class="border3">
+                    <p><em>“What is the shortest way to travel from Rotterdam to Groningen, in general: from given city
+                        to
+                        given city? It is the algorithm for the shortest path, which I designed in about twenty minutes.
+                        One
+                        morning I was shopping in Amsterdam with my young fiancée, and tired, we sat down on the café
+                        terrace to drink a cup of coffee and I was just thinking about whether I could do this, and I
+                        then
+                        designed the algorithm for the shortest path. As I said, it was a twenty-minute invention. In
+                        fact,
+                        it was published in ’59, three years late. The publication is still readable, it is, in fact,
+                        quite
+                        nice.”</em></p>
+                    <p style="margin-left: 40px">–  Edsger Dijkstra, in an interview with Philip L. Frana,
+                        Communications of the ACM, 2001</p>
+                </div>
+                <h2 id="My-Take-On-That">My Take On That</h2>
+                <div class="border3">
+                    <ul class="bulletList">
+                        <li>There were only a handful of working programmers in the 1950s, however at least one of them
+                            was
+                            as enthusiastic about coffee as some of our modern comrades.
+                        </li>
+                        <li>Djikstra was a rock star developer. Nothing pleases a rock-star-dev
+                            more
+                            than his or her own mad skillz</em>.
+                        </li>
+                    </ul>
+                </div>
+                <h2 id="LET’S-BEGIN-THIS-TIME-FOR-REAL">LET’S BEGIN, THIS TIME FOR REAL</h2>
+                <div class="border3">
+                    <p>We’re using the same graph as last week. Open your browser at <a class="link1"
+                                                                                        href="http://localhost:7474/browser/"
+                                                                                        target="_blank" rel="noopener">localhost:7474</a>
+                        and
+                        run
+                        <a class="link1" href="https://gist.github.com/jasperblues/7a6e774090c9ef0f18c44920b48b6b23"
+                           target="_blank"
+                           rel="noopener">this statement</a>.</p>
+                    <p>To recap where we left off:</p>
+                    <ul class="bulletList">
+                        <li>We expressed our requirements (find the fastest route) in CYPHER. It was a handful of lines
+                            of code.
+                        </li>
+                        <li>We found candidate routes between two required destinations, trusting that Neo4j’s CYPHER
+                            planner would choose the most appropriate path finding algorithm for us.
+                        </li>
+                        <li>Using aggregation functions and ordering, we reduced that down to the best route.</li>
+                    </ul>
+                    <p>This got the job done. When the requirements evolved we were able to update our CYPHER to match
+                        too. Pretty handy.</p>
+                </div>
+                <h2 id="Most-Expedient-Route-With-APOC">Most Expedient Route, With APOC</h2>
+                <div class="border3">
+                    <p>There are graph models and corresponding algorithms for specific classes of problems.
+                        One of which is Djikstra’s Algorithm, as discussed. It is an optimal solution, with a time
+                        copmlexity of <code>O(|E| + |V| log|V|)</code>, for finding the most expedient route on a
+                        weighted graph.</p>
+                    <p>Let’s get down to applying Djikstra’s algorithm with APOC. By the way, if you would like to read
+                        about how the algorithm works, there are some <a
+                                href="https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e"
+                                target="_blank" rel="noopener">excellent tutorials</a> on that topic. We’ll see you back
+                        here when you’re done.</p>
+                    <p>The brochure that Charm, from hotel reception, gave you this morning says that <em>Moongirl and
+                        the
+                        Bullhorns</em> are headlining at the Ruins tonight - an unplugged tribute to <a
+                            href="https://twitter.com/doctor_cerulean" target="_blank" rel="noopener">Doctor
+                        Cerulean</a>.
+                        The concert starts at sunset. It is 5pm now. Let’s see if we can get you there on time:</p>
+                    <pre><code>MATCH (a:Metro {name: 'Pigalle'})
+MATCH (b:Metro {name: 'The Ruins'})
+CALL apoc.algo.dijkstra(a, b, 'HAS_ROUTE', 'travelTime')
+YIELD path, weight
+RETURN path, weight as journeyTime;
+</code></pre>
+                    <h3 id="The-results">The results:</h3>
+                    <p>Notice how our query returned two columns. The first is a path, containing nodes and
+                        relationships,
+                        so we have a visualization available:</p>
+                    <p><img src="https://i.imgur.com/ziuzDLv.png" alt="Pigalle to The Ruins"></p>
+                    <p>We can travel to The Ruins via China Town, Intramuros, Uptown and Brooklyn.</p>
+                    <p>We returned
+                        <code>weight</code>, as <code>journeyTime</code>. Switching to the table tab, we can see that
+                        <code>journeyTime</code>
+                        is <code>29.5</code> minutes.</p>
+                </div>
+                <h2 id="Most-Expedient-Route-With-Graph-Algorithms">Most Expedient Route, With Graph Algorithms</h2>
+                <div class="border3">
+                    <p>Let's solve the road closure problem. Djikstra’s
+                        algorithm doesn’t account for this directly. We have to project a graph for it to operate on.
+                        We can do that using a combination of features in Neo4j APOC. However the implementation provided
+                        by the <em>Neo4j Graph Algorithms</em> library has a projection feature built in to the method signature,
+                    so we can do it in one step.</p>
+                    <p>First let’s ensure that each <code>HAS_ROUTE</code> relationship has a status property, and reset
+                        that status to <code>ACTIVE</code>.</p>
+                    <pre><code>MATCH ()-[r:HAS_ROUTE]-() set r.status = 'ACTIVE'
+</code></pre>
+                    <p>Now, we'll close the route between Pigalle and China Town:</p>
+                    <pre><code>MATCH (n:Metro {name: 'Pigalle'})-[r:HAS_ROUTE]-(m:Metro {name:'China Town'})
+SET r.status = 'CLOSED'
+</code></pre>
+                    <p>Finally we can run the “Neo4j Graph Algorithms” version of Djikstra’s algorithm:</p>
+                    <pre><code>MATCH (a:Metro {name: 'Pigalle'})
+MATCH (b:Metro {name: 'The Ruins'})
+CALL algo.shortestPath.stream(a, b, 'travelTime', {
+    direction: 'BOTH',
+    nodeQuery:'MATCH(n:Metro) RETURN id(n) as id',
+	relationshipQuery:'MATCH(n:Metro)-[r:HAS_ROUTE]-(m:Metro) where r.status &lt;&gt; "CLOSED"
+                        RETURN id(n) as source, id(m) as target, r.travelTime as weight',
+	graph:'cypher'
+})
+YIELD nodeId, cost
+RETURN algo.getNodeById(nodeId).name AS name, cost
+</code></pre>
+                    <h3 id="The-results">The results:</h3>
+                    <p><img src="https://i.imgur.com/qKpQnZP.png" alt="Pigalle to The Ruins"></p>
+                    <p>A road closure between Pigalle and China Town would increase the journey time to 35 minutes.</p>
+                </div>
+                <h2 id="Conclusion0">Conclusion</h2>
+                <p>Today we explored weighted graphs and Djikstra’s Algorithm with Neo4j. We discovered that Neo4j puts
+                    the power of graph algorithms at our fingertips. We also learned that we can project the property
+                    graph model to other graph models.</p>
+                <p>Please stay tuned for the next installment. I hope that you enjoyed this one! If you did, why not
+                    tell
+                    your friends about the fun that can be had when <a class="link1"
+                            href="https://twitter.com/search?f=tweets&amp;q=%23doctor-cerulean-liberates-your-data&amp;src=typd"
+                            target="_blank" rel="noopener">#doctor-cerulean-liberates-your-data</a>.</p>
+                <p>Thanks a lot! <img alt=":metal:" class="emoji"
+                                      src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/metal.png"
+                                      title=":metal:"></p></div>
+
+            <div dir="ltr" class="resize-sensor"
+                 style="position: absolute; left: -10px; top: -10px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                <div class="resize-sensor-expand"
+                     style="position: absolute; left: -10px; top: -10px; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                    <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 100000px; height: 100000px;"></div>
+                </div>
+                <div class="resize-sensor-shrink"
+                     style="position: absolute; left: -10px; top: -10px; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                    <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container txt_cntr">
+        <h2 class="v2">Comments</h2>
+
+        <div id="disqus_thread" class="border3"></div>
+        <script>
+
+
+            var disqus_config = function () {
+                this.page.url = "https://liberation-data.com/saxeburg-series/2018/12/05/rock-n-roll-traffic-routing.html";
+                this.page.identifier = "https://liberation-data.com/saxeburg-series/2018/12/05/rock-n-roll-traffic-routing.html";
+            };
+
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://liberation-data-com-1.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    </div>
+
+
+    <div class="container txt_cntr">
+        <h2 class="v2">Get in touch</h2>
+
+        <div class="row">
+            <div class="grid_10 preffix_1">
+                <p class="marTop3">We'd love to hear from you! Feel free to reach out on any of the channels
+                    below.</p>
+
+                <div class="row">
+                    <div class="grid_3">
+                        <img src="../../../../images/page1_icon4.png" alt="" class="no_resize img2">
+                        <p class="txt1"><a href="mailto:info@liberation-data.com">info@liberation-data.com</a>
+                        </p>
+                    </div>
+
+                    <div class="grid_4">
+                        <img src="../../../../images/page1_icon5.png" alt="" class="no_resize img2">
+                        <p class="txt1">801 Glenferrie Road Hawthorn, VIC</p>
+                    </div>
+
+                    <div class="grid_3">
+                        <img src="../../../../images/page1_icon6.png" alt="" class="no_resize img2">
+                        <p class="txt1"><a href="tel:+61 3 9028 7328">+61 3 9028 7328</a></p>
+                    </div>
+                </div>
+
+
+                <form id="contact-form" class="txt_left"
+                      action="https://api.formbucket.com/f/buk_EHPdlud2Cfnn1keOgmy63w6c" method="post">
+                    <div class="contact-form-loader"></div>
+                    <fieldset>
+                        <div class="row">
+                            <div class="grid_5">
+                                <label class="name">
+                                    <input type="text" name="name" placeholder="Name:" value=""
+                                           data-constraints="@Required @JustLetters"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid name.</span>
+                                </label>
+
+                                <label class="email">
+                                    <input type="text" name="email" placeholder="E-mail:" value=""
+                                           data-constraints="@Required @Email"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid email.</span>
+                                </label>
+                                <label class="subject">
+                                    <input type="text" name="phone" placeholder="Subject:" value=""
+                                           data-constraints="@Required"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid phone.</span>
+                                </label>
+                            </div>
+
+                            <div class="grid_5">
+                                <label class="message">
+                                            <textarea name="message" placeholder="Message:"
+                                                      data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*The message is too short.</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="btns">
+                            <!-- <a href="#" class="more_btn" data-type="reset">Clear</a> -->
+                            <a href="#" class="more_btn" data-type="submit" id="submit" type="submit"
+                               onclick="submit()">Submit</a>
+                        </div>
+                    </fieldset>
+                    <div class="modal fade response-message">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    You message has been sent! We will be in touch soon.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+</section>
+
+
+<!--========================================================
+                                                    FOOTER
+=========================================================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12">
+                <p class="txt_priv wow fadeInLeft">Liberation Data (c) <span id="copyright-year"></span> | <a
+                        href="../../../../privacy.html">Privacy Policy</a><br><!--{%FOOTER_LINK} -->
+                <ul class="social-icons txt_priv wow fadeInLeft">
+                    <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+                    <li><a href="https://www.linkedin.com/company/liberation-data"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a href="https://twitter.com/liberation_data"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="http://github.com/liberation-data"><i class="fa fa-github"></i></a></li>
+                    <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="../../../../js/script.js"></script>
+
+<!--[if (gt IE 9)|!(IE)]><!-->
+<script src="../../../../js/jquery.mobile.customized.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Initialize the gallery
+        $('.magnifier2').touchTouch();
+
+    });
+
+</script>
+
+
+</body>
+</html>
