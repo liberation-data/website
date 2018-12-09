@@ -1062,5 +1062,20 @@ a.certified {
   color: white;
   margin-top: 0px;
   display: inline-block;
-  font-size: 70%;
+  font-size: 77%;
+}
+
+.image-cropper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+img {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
 }
