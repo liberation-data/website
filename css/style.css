@@ -1003,7 +1003,7 @@ strong {
 
 .social-icons li {
   display: inline-block;
-  margin: 0 0 10px 0;
+  margin: 0 0 0 0;
 }
 
 .social-icons i {
@@ -1053,4 +1053,14 @@ pre {
 
 code {
   font-family: monospace, sans-serif;
+}
+
+a.certified {
+  background: #2687c5;
+  padding: 1px 10px;
+  border-radius: 50px;
+  color: white;
+  margin-top: 0px;
+  display: inline-block;
+  font-size: 70%;
 }
