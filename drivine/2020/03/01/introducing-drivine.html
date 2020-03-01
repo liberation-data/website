@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blog : Liberation Data</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="../../../../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../css/grid.css">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/contact-form.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/critical.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/app.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/universal.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/structure.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/content.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/page.css" media="all"/>
+    <link rel="stylesheet" href="/etc/designs/developer-twitter/public/css/docs.css" media="all"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+
+    <script src="../../../../js/jquery.js"></script>
+    <script src="../../../../js/jquery-migrate-1.2.1.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="../../../../js/jquery.mobile.customized.min.js"></script>
+    <script src="../../../../js/wow/wow.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+
+    <script src="../../../../js/modal.js"></script>
+
+
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0"
+                 height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../../../js/html5shiv.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../../../css/ie.css">
+    <![endif]-->
+</head>
+
+<body>
+
+<!--========================================================
+                                                    HEADER
+=========================================================-->
+<header id="header">
+    <div id="stuck_container">
+        <div class="container">
+            <h1>
+                <a href="../../../../index.html"><img src="../../../../images/hawk@84.png" alt="logo"></a>
+                <a href="../../../../index.html">
+                    <div class="liberation">Liberation Data</div>
+                </a>
+            </h1>
+
+            <nav>
+                <ul class="sf-menu">
+                    <li><a href="../../../../index.html">Home<strong></strong></a></li>
+                    <li><a href="../../../../about.html">About<strong></strong></a></li>
+                    <!--<li><a href="services.html">Services<strong></strong></a></li>-->
+                    <li class="current"><a href="../../../../blog.html">Blog<strong></strong></a></li>
+                    <li id="last-li"><a href="../../../../contact.html">Contact<strong></strong></a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</header>
+<!--========================================================
+                                                    CONTENT
+=========================================================-->
+<section id="content">
+
+
+    <div class="box-drivine"></div>
+
+    <div class="box-2">
+        <div class="container txt_left">
+            <h2 class="txt_cntr">Introducing Drivine</h2>
+            <p class="txt_ital txt_cntr">Posted on March 01, 2020 by <a href="../../../../blog.html" class="link1">Jasper
+                Blues</a> in <a href="../../../../blog.html" class="link1">Drivine</a>.</p>
+            <p class="txt_cntr">
+                <a href="ttps://twitter.com/home?status=http://liberation-data.com/blog/drivine/2020/03/01/introducing-drivine.html Drivine is a database client library for Node.js and TypeScript. It has first class support for graph databases like #Neo4j."
+                   class="twitter-mention-button" data-show-count="false">Tweet!</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </p>
+
+
+            <!-- Intro -->
+            <div class="border3">
+                <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"
+                     style="position: relative;">
+                    <p>I’m happy to share that the <strong><a href="https://drivine.org" target="_blank"
+                                                            rel="noopener">Drivine</a></strong>
+                        1.x release train is in flight!</p>
+                    <p>Drivine is a database client for <strong>Node.js and TypeScript</strong>, with first-class support for <strong>graph
+                        databases</strong>, like <strong>Neo4j</strong>.</p>
+
+                    <p>With Drivine, you can manage multiple databases, simultaneously, if you
+                        wish.
+                        The library is designed to scale to hundreds or thousands of transactions per second, and it
+                        allows
+                        you to meet these goals without compromising architectural integrity.</p>
+                    <p>Let’s explore some key features of the library.</p>
+                </div>
+            </div>
+
+
+            <!-- Registration -->
+            <div class="border3">
+                <h2 id="Database-Registration">Database Registration</h2>
+                <p>Databases or user profiles for a given database are registered <strong>on startup</strong> or <strong>at runtime</strong>, with a
+                    registry.</p>
+                <pre><code class="typescript hljs">@<span class="token function">Module</span><span
+                        class="token punctuation">(</span><span class="token punctuation">{</span>
+    imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        DrivineModule<span class="token punctuation">.</span><span class="token function">withOptions</span><span
+                            class="token punctuation">(</span><span class="token operator">&lt;</span>DrivineModuleOptions<span
+                            class="token operator">&gt;</span><span class="token punctuation">{</span>
+            connectionProviders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                DatabaseRegistry<span class="token punctuation">.</span><span class="token function">buildOrResolveFromEnv</span><span
+                            class="token punctuation">(</span><span class="token string">'BPM_MAIN'</span><span
+                            class="token punctuation">)</span><span class="token punctuation">,</span>
+                DatabaseRegistry<span class="token punctuation">.</span><span class="token function">buildOrResolveFromEnv</span><span
+                            class="token punctuation">(</span><span class="token string">'CUSTOMER_1'</span><span
+                            class="token punctuation">)</span><span class="token punctuation">,</span>
+                DatabaseRegistry<span class="token punctuation">.</span><span class="token function">buildOrResolveFromEnv</span><span
+                            class="token punctuation">(</span><span class="token string">'CUSTOMER_2'</span><span
+                            class="token punctuation">)</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        HealthModule<span class="token punctuation">,</span>
+        CustomerModule
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    controllers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span
+                            class="token punctuation">]</span><span class="token punctuation">,</span>
+    providers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span
+                            class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span
+                            class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+            </div>
+
+            <!-- Transactions -->
+            <div class="border3">
+                <h2 id="Distributed-Transactions">Distributed Transactions</h2>
+                <p>One of the features that differentiates the library is its support for distributed transactions -
+                    even across databases of different types. Transactions boundaries are specified using a TypeScript
+                    decorator.</p>
+                <pre><code class="typescript hljs">
+@<span class="token function">Injectable</span><span class="token punctuation">(</span><span
+                        class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">RouteRepository</span> <span
+                        class="token punctuation">{</span>
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span>
+        @<span class="token function">InjectPersistenceManager</span><span class="token punctuation">(</span><span
+                        class="token string">'BPM_MAIN'</span><span class="token punctuation">)</span>
+        readonly persistenceManager<span class="token punctuation">:</span> PersistenceManager<span
+                        class="token punctuation">,</span>
+        @<span class="token function">InjectCypher</span><span class="token punctuation">(</span><span
+                        class="token string">'@/traffic/routesBetween'</span><span class="token punctuation">)</span>
+        readonly routesBetween<span class="token punctuation">:</span> CypherStatement
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span><span
+                        class="token punctuation">}</span>
+
+    @<span class="token function">Transactional</span><span class="token punctuation">(</span><span
+                        class="token punctuation">)</span>
+    <span class="token keyword">async</span> <span class="token function">findFastestBetween</span><span
+                        class="token punctuation">(</span>start<span class="token punctuation">:</span> <span
+                        class="token builtin">string</span><span class="token punctuation">,</span> destination<span
+                        class="token punctuation">:</span> <span class="token builtin">string</span><span
+                        class="token punctuation">)</span><span class="token punctuation">:</span>
+        Promise<span class="token operator">&lt;</span>Route<span class="token operator">&gt;</span> <span
+                        class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span
+                        class="token punctuation">.</span>persistenceManager<span
+                        class="token punctuation">.</span><span class="token function">getOne</span><span
+                        class="token punctuation">(</span>
+            <span class="token keyword">new</span> <span class="token class-name">QuerySpecification</span><span
+                        class="token operator">&lt;</span>Route<span class="token operator">&gt;</span><span
+                        class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">withStatement</span><span
+                        class="token punctuation">(</span><span class="token keyword">this</span><span
+                        class="token punctuation">.</span>routesBetween<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">bind</span><span
+                        class="token punctuation">(</span><span class="token punctuation">[</span>start<span
+                        class="token punctuation">,</span> destination<span class="token punctuation">]</span><span
+                        class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">limit</span><span
+                        class="token punctuation">(</span><span class="token number">1</span><span
+                        class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">transform</span><span
+                        class="token punctuation">(</span>Route<span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+                <h3 id="The-results">Data Integrity &amp; Security:</h3>
+                <p>Drvine’s distributed transactions are being used in a business process management product, where
+                    transactions must span between a management database and client databases. The application is
+                    multi-tenanted, so each client runs in their own separate database.</p>
+                <p>Another important usage is in B2B support where customers have limited access to another customer’s
+                    database for process hand-off between two enterprises.</p>
+
+
+            </div>
+
+
+
+            <!-- Streaming -->
+            <div class="border3">
+            <h2 id="Streaming">Streaming</h2>
+            <p>Another key feature of the library is streaming, which can be acheived either useing Node.js <code>for-await</code>
+                syntax or using pipes. To achieve streaming, we first open a <code>Cursor&lt;T&gt;</code>:</p>
+            <pre><code class="typescript hljs">@<span class="token function">Transactional</span><span
+                    class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">async</span> <span class="token function">asyncRoutesBetween</span><span
+                        class="token punctuation">(</span>start<span class="token punctuation">:</span> <span
+                        class="token builtin">string</span><span class="token punctuation">,</span> destination<span
+                        class="token punctuation">:</span> <span class="token builtin">string</span><span
+                        class="token punctuation">)</span><span class="token punctuation">:</span>
+    Promise<span class="token operator">&lt;</span>Cursor<span class="token operator">&lt;</span>Route<span
+                        class="token operator">&gt;&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span
+                        class="token punctuation">.</span>persistenceManager<span
+                        class="token punctuation">.</span><span
+                        class="token function">openCursor</span><span class="token punctuation">(</span>
+        <span class="token keyword">new</span> <span class="token class-name">CursorSpecification</span><span
+                        class="token operator">&lt;</span>Route<span class="token operator">&gt;</span><span
+                        class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">withStatement</span><span
+                        class="token punctuation">(</span><span class="token keyword">this</span><span
+                        class="token punctuation">.</span>routesBetween<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">bind</span><span
+                        class="token punctuation">(</span><span class="token punctuation">[</span>start<span
+                        class="token punctuation">,</span> destination<span class="token punctuation">]</span><span
+                        class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">batchSize</span><span
+                        class="token punctuation">(</span><span class="token number">5</span><span
+                        class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">transform</span><span
+                        class="token punctuation">(</span>Route<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+            <h3 id="For-await">For-await</h3>
+            <p>With for-wait items will be fetched as needed.</p>
+            <pre><code class="typescript hljs"><span class="token keyword">const</span> cursor <span
+                    class="token operator">=</span> <span class="token keyword">await</span> repo<span
+                    class="token punctuation">.</span><span class="token function">asyncRoutesBetween</span><span
+                    class="token punctuation">(</span><span class="token string">'Cavite Island'</span><span
+                    class="token punctuation">,</span> <span class="token string">'NYC'</span><span
+                    class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token keyword">await</span> <span class="token punctuation">(</span><span
+                        class="token keyword">const</span> item <span class="token keyword">of</span> cursor<span
+                        class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>item<span
+                        class="token punctuation">.</span>travelTime<span class="token punctuation">)</span><span
+                        class="token punctuation">.</span><span class="token function">toBeGreaterThan</span><span
+                        class="token punctuation">(</span><span class="token number">0</span><span
+                        class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>item<span
+                        class="token punctuation">.</span>metros<span class="token punctuation">.</span>length<span
+                        class="token punctuation">)</span><span class="token punctuation">.</span><span
+                        class="token function">toBeGreaterThan</span><span class="token punctuation">(</span><span
+                        class="token number">0</span><span class="token punctuation">)</span><span
+                        class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>item<span
+                        class="token punctuation">)</span><span class="token punctuation">.</span><span
+                        class="token function">toBeInstanceOf</span><span
+                        class="token punctuation">(</span>Route<span class="token punctuation">)</span><span
+                        class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+            <h3 id="Pipes">Pipes</h3>
+            <p>If the destination for streamed data is an output stream, it is best to use pipes, in order to avoid
+                <a href="https://nodejs.org/es/docs/guides/backpressuring-in-streams/" target="_blank"
+                   rel="noopener">back-pressure</a>.</p>
+            <pre><code class="typescript hljs">cursor<span class="token punctuation">.</span><span
+                    class="token function">asStream</span><span class="token punctuation">(</span><span
+                    class="token punctuation">{</span> transform<span class="token punctuation">:</span> <span
+                    class="token punctuation">(</span>route<span class="token punctuation">:</span> Route<span
+                    class="token punctuation">)</span> <span class="token operator">=&gt;</span> route<span
+                    class="token punctuation">.</span><span class="token function">toString</span><span
+                    class="token punctuation">(</span><span class="token punctuation">)</span> <span
+                    class="token punctuation">}</span><span class="token punctuation">)</span><span
+                    class="token punctuation">.</span><span class="token function">pipe</span><span
+                    class="token punctuation">(</span>fileStream<span class="token punctuation">)</span><span
+                    class="token punctuation">;</span>
+<span class="token keyword">await</span> StreamUtils<span class="token punctuation">.</span><span
+                        class="token function">untilClosed</span><span
+                        class="token punctuation">(</span>fileStream<span class="token punctuation">)</span><span
+                        class="token punctuation">;</span>
+
+</code></pre>
+
+            </div>
+            <h2 id="Getting-Started">Getting Started</h2>
+            <p>If you would like to know more about Drivine, including how to get started, please <strong><a href="https://drivine.org" target="_blank" rel="noopener">visit the website</a></strong>.
+                And of course, if you're using Drivine already, we'd love to hear about it!
+                </p></div>
+
+
+        <div dir="ltr" class="resize-sensor"
+             style="position: absolute; left: -10px; top: -10px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+            <div class="resize-sensor-expand"
+                 style="position: absolute; left: -10px; top: -10px; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 100000px; height: 100000px;"></div>
+            </div>
+            <div class="resize-sensor-shrink"
+                 style="position: absolute; left: -10px; top: -10px; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="container txt_cntr">
+        <h2 class="v2">Comments</h2>
+
+        <div id="disqus_thread" class="border3"></div>
+        <script>
+
+
+            var disqus_config = function () {
+                this.page.url = 'https://liberation-data.com/drivine/2020/03/01/introducing-drivine.html';
+                this.page.identifier = 'https://liberation-data.com/drivine/2020/03/01/introducing-drivine.html';
+            };
+
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://liberation-data-com-1.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    </div>
+
+
+    <div class="container txt_cntr">
+        <h2 class="v2">Get in touch</h2>
+
+        <div class="row">
+            <div class="grid_10 preffix_1">
+                <p class="marTop3">We'd love to hear from you! Feel free to reach out on any of the channels
+                    below.</p>
+
+                <div class="row">
+                    <div class="grid_3">
+                        <img src="../../../../images/page1_icon4.png" alt="" class="no_resize img2">
+                        <p class="txt1"><a href="mailto:info@liberation-data.com">info@liberation-data.com</a>
+                        </p>
+                    </div>
+
+                    <div class="grid_4">
+                        <img src="../../../../images/page1_icon5.png" alt="" class="no_resize img2">
+                        <p class="txt1">801 Glenferrie Road Hawthorn, VIC</p>
+                    </div>
+
+                    <div class="grid_3">
+                        <img src="../../../../images/page1_icon6.png" alt="" class="no_resize img2">
+                        <p class="txt1"><a href="tel:+61 3 9028 7328">+61 3 9028 7328</a></p>
+                    </div>
+                </div>
+
+
+                <form id="contact-form" class="txt_left"
+                      action="https://api.formbucket.com/f/buk_EHPdlud2Cfnn1keOgmy63w6c" method="post">
+                    <div class="contact-form-loader"></div>
+                    <fieldset>
+                        <div class="row">
+                            <div class="grid_5">
+                                <label class="name">
+                                    <input type="text" name="name" placeholder="Name:" value=""
+                                           data-constraints="@Required @JustLetters"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid name.</span>
+                                </label>
+
+                                <label class="email">
+                                    <input type="text" name="email" placeholder="E-mail:" value=""
+                                           data-constraints="@Required @Email"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid email.</span>
+                                </label>
+                                <label class="subject">
+                                    <input type="text" name="phone" placeholder="Subject:" value=""
+                                           data-constraints="@Required"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid phone.</span>
+                                </label>
+                            </div>
+
+                            <div class="grid_5">
+                                <label class="message">
+                                            <textarea name="message" placeholder="Message:"
+                                                      data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*The message is too short.</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="btns">
+                            <!-- <a href="#" class="more_btn" data-type="reset">Clear</a> -->
+                            <a href="#" class="more_btn" data-type="submit" id="submit" type="submit"
+                               onclick="submit()">Submit</a>
+                        </div>
+                    </fieldset>
+                    <div class="modal fade response-message">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    You message has been sent! We will be in touch soon.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+</section>
+
+
+<!--========================================================
+                                                    FOOTER
+=========================================================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12">
+                <p class="txt_priv wow fadeInLeft">Liberation Data (c) <span id="copyright-year"></span> | <a
+                        href="../../../../privacy.html">Privacy Policy</a><br><!--{%FOOTER_LINK} -->
+                <ul class="social-icons txt_priv wow fadeInLeft">
+                    <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+                    <li><a href="https://www.linkedin.com/company/liberation-data"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a href="https://twitter.com/liberation_data"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="http://github.com/liberation-data"><i class="fa fa-github"></i></a></li>
+                    <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="../../../../js/script.js"></script>
+
+<!--[if (gt IE 9)|!(IE)]><!-->
+<script src="../../../../js/jquery.mobile.customized.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Initialize the gallery
+        $('.magnifier2').touchTouch();
+
+    });
+
+</script>
+
+
+</body>
+</html>
