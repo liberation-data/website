@@ -90,336 +90,353 @@
     <div class="box-2">
         <div class="container txt_left">
             <h2 class="txt_cntr">Rock 'n' Roll Traffic Routing, With Neo4j</h2>
-            <p class="txt_ital txt_cntr">Posted on November 28, 2018 by <a href="../../../../blog.html" class="link1">Jasper Blues</a> in <a href="../../../../blog.html" class="link1">Saxeburg Series</a>.</p>
+            <p class="txt_ital txt_cntr">Posted on November 28, 2018 by <a href="../../../../blog.html" class="link1">Jasper
+                Blues</a> in <a href="../../../../blog.html" class="link1">Saxeburg Series</a>.</p>
             <p class="txt_cntr">
-                <a href="https://twitter.com/intent/tweet?text=I%27m+reading+%27Rock+%27n%27+Roll+Traffic+Routing%27%2C+part+of+the+%23saxeburg-series+of+%23neo4j+tutorials+by+%40doctor_cerulean%21+&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet!</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <a href="https://twitter.com/intent/tweet?text=I%27m+reading+%27Rock+%27n%27+Roll+Traffic+Routing%27%2C+part+of+the+%23saxeburg-series+of+%23neo4j+tutorials+by+%40doctor_cerulean%21+&ref_src=twsrc%5Etfw"
+                   class="twitter-mention-button" data-show-count="false">Tweet!</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </p>
 
             <div class="border3">
-            <p>This post is the first of my <strong><a
-                    href="https://twitter.com/search?f=tweets&amp;q=%23saxeburg-series&amp;src=typd"
-                    target="_blank" rel="noopener">#saxeburg-series</a></strong>, for young
-                entrepreneurs (or the young at heart), in which we’ll learn about Neo4j and have some fun at the same time. How?
-                By building our own Neo4j-powered mobile game.</p>
+                <p>This post is the first of my <strong><a
+                        href="https://twitter.com/search?f=tweets&amp;q=%23saxeburg-series&amp;src=typd"
+                        target="_blank" rel="noopener">#saxeburg-series</a></strong>, for young
+                    entrepreneurs (or the young at heart), in which we’ll learn about Neo4j and have some fun at the
+                    same time. How?
+                    By building our own Neo4j-powered mobile game.</p>
             </div>
 
             <h2 id="Let’s-Begin">Let’s Begin</h2>
             <div class="border3">
-            <p>Have you ever wondered how apps like Google Maps or Waze provide turn by turn directions and
-                offer the fastest
-                route, as well as respond to changing traffic conditions in realtime?</p>
-            <p>Today I will show you how to use Neo4j for traffic routing, and it will only take a few
-                minutes.</p>
-            <p>As you will soon see, we could pick any city that we like as a case study, however for the sake
-                of this article
-                let us imagine a sprawling nation-state that is part Paris, part Metro Manila and part Coney
-                Island. Are you
-                with me?</p>
-            <p>Such a city could be represented in topographical form like this:</p>
-            <p><img src="https://i.imgur.com/mNEeCZj.jpg" alt="Saxeburg"><br>
-                <em>Saxeburg, c. 1986</em></p>
+                <p>Have you ever wondered how apps like Google Maps or Waze provide turn by turn directions and
+                    offer the fastest
+                    route, as well as respond to changing traffic conditions in realtime?</p>
+                <p>Today I will show you how to use Neo4j for traffic routing, and it will only take a few
+                    minutes.</p>
+                <p>As you will soon see, we could pick any city that we like as a case study, however for the sake
+                    of this article
+                    let us imagine a sprawling nation-state that is part Paris, part Metro Manila and part Coney
+                    Island. Are you
+                    with me?</p>
+                <p>Such a city could be represented in topographical form like this:</p>
+                <p><img src="https://i.imgur.com/mNEeCZj.jpg" alt="Saxeburg"><br>
+                    <em>Saxeburg, c. 1986</em></p>
             </div>
             <div class="border3">
-            <h2 id="Doctor-Cerulean">Doctor Cerulean</h2>
-            <p>Towards the task at hand let us also imagine Dr Cerulean, the charismatic founding forefather of
-                our thriving
-                metropolis. Charisma aside, he is unfortunately a calamitously lazy man and one prone to
-                numerous vices at that.
-                Most especially wine, women and song.</p>
-            <p>We are going somewhere with this, but I would ask that you please stretch your imagination <em>just</em>
-                a little
-                more, to accommodate the following notion: On the night before he was due to present an
-                inaugural city charter,
-                our dear Doctor was in Phoenix sampling the Cactus Juice, which is very good down that way.
-                And
-                unfortunately also lethal on this occasion.</p>
+                <h2 id="Doctor-Cerulean">Doctor Cerulean</h2>
+                <p>Towards the task at hand let us also imagine Dr Cerulean, the charismatic founding forefather of
+                    our thriving
+                    metropolis. Charisma aside, he is unfortunately a calamitously lazy man and one prone to
+                    numerous vices at that.
+                    Most especially wine, women and song.</p>
+                <p>We are going somewhere with this, but I would ask that you please stretch your imagination
+                    <em>just</em>
+                    a little
+                    more, to accommodate the following notion: On the night before he was due to present an
+                    inaugural city charter,
+                    our dear Doctor was in Phoenix sampling the Cactus Juice, which is very good down that way.
+                    And
+                    unfortunately also lethal on this occasion.</p>
             </div>
             <h2 id="The-Last-Day-of-Doctor-Cerulean’s-Life">The Last Day of Doctor Cerulean’s Life</h2>
             <div class="border3">
-            <p>OK, so here we are on the last day of our city founding father’s last day of life. We will get to
-                the traffic
-                routing in a moment, but I think we better address this matter at least briefly, as it would be
-                disrespectful to brush over, wouldn’t it?</p>
-            <p>Doctor Cerulean commenced his last day, after waking from an hour or two of sleep. He discovered
-                himself in a
-                compromising position, but was otherwise feeling quite fantastic. Violently alive, you could
-                say. The city
-                charter, however was nowhere in site, the task of preparing one having been neglected for months
-                prior.</p>
-            <p>You might think this sounds like the start of a day where things aren’t going to go necessarily
-                all that well,
-                and you’d be right.</p>
-            <p>However, at this point, I can elaborate on some of the soon-to-be departed Doctor’s redeeming
-                qualities. For one,
-                he is deliciously playful. Two, he’s remarkably resourceful and quite inventive to boot.</p>
-            <p>You see, the night prior, there was a fantastic party taking place in the science department of
-                Phoenix’ very
-                party-oriented fledgling university campus. Thus, the Doctor found himself, that morning,
-                regaining some
-                semblance of consciousness drooling onto a Periodic Table of Elements.</p>
-            <p>Having awoken at ten, and due to present the city charter at eleven, our Doctor performed a
-                momentous feat. He
-                gathered up the table of elements, crossed out the carbon; nitrogen; phosphorus; oxygen;
-                sulphur; selenium
-                various noble gasses and so forth until there was nothing left but what? Exactly: <em>metal</em>.
-                On top of
-                this, he scrawled, in black marker pen: “The People Will Rock!”.</p>
-            <p>And so, this is the document he presented in lieu of an actual city charter, in front of the
-                assembled town hall,
-                and those were in fact the last words he uttered. They were spoken with enthusiasm and with arm
-                held aloft,
-                fingers formed into a pair of horns.</p>
-            <p>He then promptly collapsed and died, on stage, making quite a show of it.</p>
+                <p>OK, so here we are on the last day of our city founding father’s last day of life. We will get to
+                    the traffic
+                    routing in a moment, but I think we better address this matter at least briefly, as it would be
+                    disrespectful to brush over, wouldn’t it?</p>
+                <p>Doctor Cerulean commenced his last day, after waking from an hour or two of sleep. He discovered
+                    himself in a
+                    compromising position, but was otherwise feeling quite fantastic. Violently alive, you could
+                    say. The city
+                    charter, however was nowhere in site, the task of preparing one having been neglected for months
+                    prior.</p>
+                <p>You might think this sounds like the start of a day where things aren’t going to go necessarily
+                    all that well,
+                    and you’d be right.</p>
+                <p>However, at this point, I can elaborate on some of the soon-to-be departed Doctor’s redeeming
+                    qualities. For one,
+                    he is deliciously playful. Two, he’s remarkably resourceful and quite inventive to boot.</p>
+                <p>You see, the night prior, there was a fantastic party taking place in the science department of
+                    Phoenix’ very
+                    party-oriented fledgling university campus. Thus, the Doctor found himself, that morning,
+                    regaining some
+                    semblance of consciousness drooling onto a Periodic Table of Elements.</p>
+                <p>Having awoken at ten, and due to present the city charter at eleven, our Doctor performed a
+                    momentous feat. He
+                    gathered up the table of elements, crossed out the carbon; nitrogen; phosphorus; oxygen;
+                    sulphur; selenium
+                    various noble gasses and so forth until there was nothing left but what? Exactly: <em>metal</em>.
+                    On top of
+                    this, he scrawled, in black marker pen: “The People Will Rock!”.</p>
+                <p>And so, this is the document he presented in lieu of an actual city charter, in front of the
+                    assembled town hall,
+                    and those were in fact the last words he uttered. They were spoken with enthusiasm and with arm
+                    held aloft,
+                    fingers formed into a pair of horns.</p>
+                <p>He then promptly collapsed and died, on stage, making quite a show of it.</p>
             </div>
             <div class="border3">
-            <p>The doctors (actual qualified ones) wrote “general congestion in all systems”, which was a polite
-                way of saying
-                “excess of Cactus Juice”, back in those days.</p>
+                <p>The doctors (actual qualified ones) wrote “general congestion in all systems”, which was a polite
+                    way of saying
+                    “excess of Cactus Juice”, back in those days.</p>
             </div>
             <h2 id="Don’t-Cry">Don’t Cry</h2>
             <div class="border3">
-            <p>Finally, here ready to commence our traffic routing exercise! Woo hoo! However, hmmmm . . . now
-                I’m a little
-                worried about you.</p>
-            <p>Maybe this story of Doctor Cerulean, has moved you. Rocked your emotional core, so to speak.
-                Perhaps even to the
-                point of overcoming your powers of cognition. The thing is, you are going to need those.</p>
-            <p>Therefore I would say to you this: Do not shed a tear! The good Doctor’s statue stands aloft in
-                Intramuros to
-                this day. He is looking very dapper, albeit simultaneously a little worse for wear. His arm is
-                raised, just as
-                it was in those last moments, in an ever enduring veneration of metal and hard-living.</p>
-            <p>Meanwhile Saxeburg is thriving, it really is. And I tell you <em>what</em>, the people certainly
-                did rock! Every
-                neighbourhood adopted an elemental metal, enshrined it with a stage and auditorium with standing
-                area for
-                thousands. There are full light-show capabilities (on days that the town’s electricity supply is
-                functioning),
-                you name it.</p>
+                <p>Finally, here ready to commence our traffic routing exercise! Woo hoo! However, hmmmm . . . now
+                    I’m a little
+                    worried about you.</p>
+                <p>Maybe this story of Doctor Cerulean, has moved you. Rocked your emotional core, so to speak.
+                    Perhaps even to the
+                    point of overcoming your powers of cognition. The thing is, you are going to need those.</p>
+                <p>Therefore I would say to you this: Do not shed a tear! The good Doctor’s statue stands aloft in
+                    Intramuros to
+                    this day. He is looking very dapper, albeit simultaneously a little worse for wear. His arm is
+                    raised, just as
+                    it was in those last moments, in an ever enduring veneration of metal and hard-living.</p>
+                <p>Meanwhile Saxeburg is thriving, it really is. And I tell you <em>what</em>, the people certainly
+                    did rock! Every
+                    neighbourhood adopted an elemental metal, enshrined it with a stage and auditorium with standing
+                    area for
+                    thousands. There are full light-show capabilities (on days that the town’s electricity supply is
+                    functioning),
+                    you name it.</p>
             </div>
             <h2 id="Moongirl-and-the-Bullhorns">Moongirl and the Bullhorns</h2>
             <div class="border3">
-            <p><em>Now</em>, the show is on the road. Ladies and gentlemen, I would like to welcome you to present-day Saxeburg, and
-                introduce you to <em>Moo-oooonngirl
-                    and the Bullhorns!</em> (Moongirl, please take a bow).</p>
-            <p>Moongirl is the nubile lead singer of Saxeburg’s premier Rock and Roll show and the Bullhorns are
-                the tightest
-                backing band in the business. A dashing bunch of brutes too.</p>
-            <p>Moongirl and her band put on a show every night of the year, and they love what they do. There is
-                only one
-                problem.</p>
-            <p>The traffic in Saxeburg is bloody <em>terrible</em>!</p>
+                <p><em>Now</em>, the show is on the road. Ladies and gentlemen, I would like to welcome you to
+                    present-day Saxeburg, and
+                    introduce you to <em>Moo-oooonngirl
+                        and the Bullhorns!</em> (Moongirl, please take a bow).</p>
+                <p>Moongirl is the nubile lead singer of Saxeburg’s premier Rock and Roll show and the Bullhorns are
+                    the tightest
+                    backing band in the business. A dashing bunch of brutes too.</p>
+                <p>Moongirl and her band put on a show every night of the year, and they love what they do. There is
+                    only one
+                    problem.</p>
+                <p>The traffic in Saxeburg is bloody <em>terrible</em>!</p>
             </div>
             <h2 id="Let’s-Begin-This-Time-For-Real">Let’s Begin, This Time For Real</h2>
             <div class="border3">
-            <p>Moongirl has been spending the day at the beach, with her boys. Meanwhile she is
-                head-lining at the Grand
-                Théâtre de Rabat in NYC tonight. Let’s see if we can get her to the gig on time.</p>
-            <p>I’m assuming you have an instance of Neo4j running on your machine. If you don’t <a class="link1"
-                    href="https://neo4j.com/developer/get-started/" target="_blank" rel="noopener">go google
-                that</a> and we’ll
-                regroup here.</p>
+                <p>Moongirl has been spending the day at the beach, with her boys. Meanwhile she is
+                    head-lining at the Grand
+                    Théâtre de Rabat in NYC tonight. Let’s see if we can get her to the gig on time.</p>
+                <p>I’m assuming you have an instance of Neo4j running on your machine. If you don’t <a class="link1"
+                                                                                                       href="https://neo4j.com/developer/get-started/"
+                                                                                                       target="_blank"
+                                                                                                       rel="noopener">go
+                    google
+                    that</a> and we’ll
+                    regroup here.</p>
             </div>
 
 
             <h2 id="Data-Ingestion">Data Ingestion</h2>
             <div class="border3">
-            <p>Open your browser at <a class="link1" href="http://localhost:7474/browser/" target="_blank" rel="noopener">localhost:7474</a>
-                and run <a class="link1" href="https://gist.github.com/jasperblues/7a6e774090c9ef0f18c44920b48b6b23"
-                           target="_blank"
-                           rel="noopener">the statement in this gist</a>.</p>
-            <p>Having run the gist above, now run:</p>
-            <pre><code class="cypher hljs">match (n) <span class="hljs-built_in">return</span> n;
+                <p>Open your browser at <a class="link1" href="http://localhost:7474/browser/" target="_blank"
+                                           rel="noopener">localhost:7474</a>
+                    and run <a class="link1" href="https://gist.github.com/jasperblues/7a6e774090c9ef0f18c44920b48b6b23"
+                               target="_blank"
+                               rel="noopener">the statement in this gist</a>.</p>
+                <p>Having run the gist above, now run:</p>
+                <pre><code class="cypher hljs">match (n) <span class="hljs-built_in">return</span> n;
 </code></pre>
-            <p>This yields a graph that will look something like this:</p>
-            <p><img src="https://i.imgur.com/I2xuxLK.png" alt="saxeburg-graph"></p>
-            <p>The first thing that you might notice is that it looks nothing like our topographical map. So
-                what gives?</p>
+                <p>This yields a graph that will look something like this:</p>
+                <p><img src="https://i.imgur.com/I2xuxLK.png" alt="saxeburg-graph"></p>
+                <p>The first thing that you might notice is that it looks nothing like our topographical map. So
+                    what gives?</p>
             </div>
 
 
             <h2 id="Graph-Theory">Graph Theory</h2>
             <div class="border3">
-            <p>Well, you probably know that graph databases are based on a branch of mathematics, in the field
-                of combinatorics called graph theory; that in fact graph theory itself emerged from an exercise in path-finding:</p>
-            <p>Euler’s solution of the <a href="https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg"
-                                          target="_blank"
-                                          rel="noopener">Königsberg bridge problem</a> is considered to be the
-                first theorem of graph theory and the first true proof in the theory of networks. Additionally Euler recognised
-                that the key information was the number of bridges and the list of their endpoints rather than their exact positions.</p>
-            <p>So there’s that.</p>
+                <p>Well, you probably know that graph databases are based on a branch of mathematics, in the field
+                    of combinatorics called graph theory; that in fact graph theory itself emerged from an exercise in
+                    path-finding:</p>
+                <p>Euler’s solution of the <a href="https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg"
+                                              target="_blank"
+                                              rel="noopener">Königsberg bridge problem</a> is considered to be the
+                    first theorem of graph theory and the first true proof in the theory of networks. Additionally Euler
+                    recognised
+                    that the key information was the number of bridges and the list of their endpoints rather than their
+                    exact positions.</p>
+                <p>So there’s that.</p>
             </div>
 
             <h2 id="More-Graph-Theory">More Graph Theory</h2>
 
             <div class="border3">
-            <p>But it is quite a rabbit hole, actually.</p>
-            <p>While combinatorial problems have been considered since antiquity and graph theory emerged some
-                three hundred
-                years ago, network structures remain an <a href="https://arxiv.org/pdf/1710.01144.pdf"
-                                                           target="_blank"
-                                                           rel="noopener">area of research interest</a> to this
-                day.</p>
-            <p>Meanwhile the practical ramifications are endless. Some examples of applied graph theory are:</p>
-            <ul class="bulletList">
-                <li>Recommendation engines</li>
-                <li>Root cause analysis</li>
-                <li>Fraud Detection</li>
-            </ul>
-            <p>Something that makes Neo4j so compelling is that it puts graph algorithms for real-time
-                transactional data at
-                your fingertips.</p>
-            <p>In fact later in this series we will be applying graph theory to solve a crime. Or maybe
-                (shocking thought) to
-                get away with one. Which will it be?</p>
-            <p>Of course this is a suspenseful blog series so you’ll have to wait. In the meantime our sassy
-                urbanite is
-                starting to get tetchy about being late for her gig, so we’d better press on!</p>
+                <p>But it is quite a rabbit hole, actually.</p>
+                <p>While combinatorial problems have been considered since antiquity and graph theory emerged some
+                    three hundred
+                    years ago, network structures remain an <a href="https://arxiv.org/pdf/1710.01144.pdf"
+                                                               target="_blank"
+                                                               rel="noopener">area of research interest</a> to this
+                    day.</p>
+                <p>Meanwhile the practical ramifications are endless. Some examples of applied graph theory are:</p>
+                <ul class="bulletList">
+                    <li>Recommendation engines</li>
+                    <li>Root cause analysis</li>
+                    <li>Fraud Detection</li>
+                </ul>
+                <p>Something that makes Neo4j so compelling is that it puts graph algorithms for real-time
+                    transactional data at
+                    your fingertips.</p>
+                <p>In fact later in this series we will be applying graph theory to solve a crime. Or maybe
+                    (shocking thought) to
+                    get away with one. Which will it be?</p>
+                <p>Of course this is a suspenseful blog series so you’ll have to wait. In the meantime our sassy
+                    urbanite is
+                    starting to get tetchy about being late for her gig, so we’d better press on!</p>
             </div>
 
 
             <h2 id="Bidirectional-Relationships">Bidirectional Relationships</h2>
             <div class="border3">
-            <p>Something else that you might notice is that the <code>HAS_ROUTE</code> relationships are
-                directional - we can
-                see this on the visualisation, because, well, they have arrows on one end.</p>
-            <p>However, we have actually modelled Saxeburg as an undirected graph. <em>But</em>, all
-                relationships in Neo4j are
-                <em>directed</em>.</p>
-            <p>So what is happening here? Well, the CYPHER query language allows us to ignore direction when it
-                is not relevant.
-                You can see an example of that on the merge statements to create those <code>HAS_ROUTE</code>
-                relationships, and
-                we’ll employ it again in a moment.</p>
+                <p>Something else that you might notice is that the <code>HAS_ROUTE</code> relationships are
+                    directional - we can
+                    see this on the visualisation, because, well, they have arrows on one end.</p>
+                <p>However, we have actually modelled Saxeburg as an undirected graph. <em>But</em>, all
+                    relationships in Neo4j are
+                    <em>directed</em>.</p>
+                <p>So what is happening here? Well, the CYPHER query language allows us to ignore direction when it
+                    is not relevant.
+                    You can see an example of that on the merge statements to create those <code>HAS_ROUTE</code>
+                    relationships, and
+                    we’ll employ it again in a moment.</p>
             </div>
 
 
             <h2 id="Exploring-Routes">Exploring Routes</h2>
             <div class="border3">
-            <p>Let’s run the following CYPHER:</p>
-            <pre><code class="cypher hljs"><span class="hljs-selector-tag">MATCH</span> (<span
-                    class="hljs-selector-tag">n</span><span class="hljs-selector-pseudo">:Metro)-</span><span
-                    class="hljs-selector-attr">[r:HAS_ROUTE]</span><span
-                    class="hljs-selector-tag">-</span>(<span
-                    class="hljs-selector-tag">m</span><span class="hljs-selector-pseudo">:Metro)</span>
+                <p>Let’s run the following CYPHER:</p>
+                <pre><code class="cypher hljs"><span class="hljs-selector-tag">MATCH</span> (<span
+                        class="hljs-selector-tag">n</span><span class="hljs-selector-pseudo">:Metro)-</span><span
+                        class="hljs-selector-attr">[r:HAS_ROUTE]</span><span
+                        class="hljs-selector-tag">-</span>(<span
+                        class="hljs-selector-tag">m</span><span class="hljs-selector-pseudo">:Metro)</span>
 <span class="hljs-selector-tag">RETURN</span> <span class="hljs-selector-tag">n</span><span class="hljs-selector-class">.name</span>, <span
-                        class="hljs-selector-tag">r</span><span class="hljs-selector-class">.travelTime</span>, <span
-                        class="hljs-selector-tag">m</span><span class="hljs-selector-class">.name</span>
+                            class="hljs-selector-tag">r</span><span
+                            class="hljs-selector-class">.travelTime</span>, <span
+                            class="hljs-selector-tag">m</span><span class="hljs-selector-class">.name</span>
   <span class="hljs-selector-tag">LIMIT</span> 5;
 </code></pre>
-            <p>This yields the following results:</p>
-            <p><img src="https://i.imgur.com/S7rCAAa.png" alt=""></p>
-            <p>We can see that each <code>Metro</code> has a route to various other metros, and that the average
-                travel time has
-                been recorded.</p>
+                <p>This yields the following results:</p>
+                <p><img src="https://i.imgur.com/S7rCAAa.png" alt=""></p>
+                <p>We can see that each <code>Metro</code> has a route to various other metros, and that the average
+                    travel time has
+                    been recorded.</p>
             </div>
 
 
             <h2 id="Most-Expedient-Route">Most Expedient Route</h2>
             <div class="border3">
-            <p>Using the information at hand, we can now easily find the most expedient route from Cavite Island
-                to NYC:</p>
-            <pre><code class="cypher hljs">MATCH paths = (a:Metro {name: <span
-                    class="hljs-string">'Cavite Island'</span>})-[:HAS_ROUTE*<span
-                    class="hljs-number">1.</span><span class="hljs-number">.6</span>]-(b:Metro {name: <span
-                    class="hljs-string">'NYC'</span>})
+                <p>Using the information at hand, we can now easily find the most expedient route from Cavite Island
+                    to NYC:</p>
+                <pre><code class="cypher hljs">MATCH paths = (a:Metro {name: <span
+                        class="hljs-string">'Cavite Island'</span>})-[:HAS_ROUTE*<span
+                        class="hljs-number">1.</span><span class="hljs-number">.6</span>]-(b:Metro {name: <span
+                        class="hljs-string">'NYC'</span>})
 WITH paths, relationships(paths) <span class="hljs-keyword">AS</span> rels
 UNWIND rels <span class="hljs-keyword">AS</span> rel
-WITH paths, collect(rel.travelTime) <span class="hljs-keyword">AS</span> streets, sum(rel.travelTime) <span
-                        class="hljs-keyword">AS</span> travelTime
-<span class="hljs-keyword">RETURN</span> extract (n IN nodes(paths) | n.name) <span class="hljs-keyword">AS</span> metros, streets, travelTime
-  ORDER BY travelTime;
+WITH [metro IN nodes(paths) | metro.name] <span class="hljs-keyword">AS</span> metros,
+     collect(rel.travelTime) <span class="hljs-keyword">AS</span> streets,
+     sum(rel.travelTime) <span class="hljs-keyword">AS</span> travelTime
+  ORDER BY travelTime
+<span class="hljs-keyword">RETURN</span> metros, streets, travelTime
 </code></pre>
-            <p><img src="https://i.imgur.com/KJzt2T2.png" alt=""></p>
-            <p>This query tells us the following:</p>
-            <ul class="bulletList">
-                <li>Moongirl will get to her gig on time - she can reach NYC in 26 minutes.</li>
-                <li>She can wave at Doctor Cerulean’s statue on the way - the fastest route is via Intramuros
-                    and China Town.
-                </li>
-            </ul>
+                <p><img src="https://i.imgur.com/KJzt2T2.png" alt=""></p>
+                <p>This query tells us the following:</p>
+                <ul class="bulletList">
+                    <li>Moongirl will get to her gig on time - she can reach NYC in 26 minutes.</li>
+                    <li>She can wave at Doctor Cerulean’s statue on the way - the fastest route is via Intramuros
+                        and China Town.
+                    </li>
+                </ul>
             </div>
-
 
 
             <h2 id="Road-Closures">Road Closures</h2>
             <div class="border3">
-            <p>Let’s expand our model to handle road closures.</p>
-            <pre><code class="cypher hljs">MATCH (<span class="hljs-symbol">:Metro</span>)-[<span
-                    class="hljs-symbol">r:</span>HAS_ROUTE]-(<span
-                    class="hljs-symbol">:Metro</span>)
+                <p>Let’s expand our model to handle road closures.</p>
+                <pre><code class="cypher hljs">MATCH (<span class="hljs-symbol">:Metro</span>)-[<span
+                        class="hljs-symbol">r:</span>HAS_ROUTE]-(<span
+                        class="hljs-symbol">:Metro</span>)
 SET r.status = <span class="hljs-string">'ACTIVE'</span>;
 </code></pre>
-            <p>The citizens of Saxeburg decide to throw their television sets out of their windows. It causes
-                road closures
-                between China Town and Ermita, and also between Intramuros and China Town.</p>
-            <pre><code class="cypher hljs">MATCH (<span class="hljs-symbol">:Metro</span> {<span
-                    class="hljs-symbol">name:</span><span class="hljs-string">'China Town'</span>})-[<span
-                    class="hljs-symbol">r1:</span>HAS_ROUTE]-(<span
-                    class="hljs-symbol">m:</span>Metro {<span class="hljs-symbol">name:</span> <span
-                    class="hljs-string">'Ermita'</span>})
+                <p>The citizens of Saxeburg decide to throw their television sets out of their windows. It causes
+                    road closures
+                    between China Town and Ermita, and also between Intramuros and China Town.</p>
+                <pre><code class="cypher hljs">MATCH (<span class="hljs-symbol">:Metro</span> {<span
+                        class="hljs-symbol">name:</span><span class="hljs-string">'China Town'</span>})-[<span
+                        class="hljs-symbol">r1:</span>HAS_ROUTE]-(<span
+                        class="hljs-symbol">m:</span>Metro {<span class="hljs-symbol">name:</span> <span
+                        class="hljs-string">'Ermita'</span>})
 WITH r1
 MATCH (<span class="hljs-symbol">:Metro</span> {<span class="hljs-symbol">name:</span><span class="hljs-string">'Intramuros'</span>})-[<span
-                        class="hljs-symbol">r2:</span>HAS_ROUTE]-(<span
-                        class="hljs-symbol">m:</span>Metro {<span
-                        class="hljs-symbol">name:</span> <span class="hljs-string">'China Town'</span>})
+                            class="hljs-symbol">r2:</span>HAS_ROUTE]-(<span
+                            class="hljs-symbol">m:</span>Metro {<span
+                            class="hljs-symbol">name:</span> <span class="hljs-string">'China Town'</span>})
 SET r1.status = <span class="hljs-string">'CLOSED'</span>
 SET r2.status = <span class="hljs-string">'CLOSED'</span>;
 </code></pre>
-            <p>Now we can extend our initial query as follows:</p>
-            <pre><code class="cypher hljs">MATCH paths = (a:Metro {name: <span
-                    class="hljs-string">'Cavite Island'</span>})-[:HAS_ROUTE*<span
-                    class="hljs-number">1.</span><span class="hljs-number">.6</span>]-(b:Metro {name: <span
-                    class="hljs-string">'NYC'</span>})
+                <p>Now we can extend our initial query as follows:</p>
+                <pre><code class="cypher hljs">MATCH paths = (a:Metro {name: <span
+                        class="hljs-string">'Cavite Island'</span>})-[:HAS_ROUTE*<span
+                        class="hljs-number">1.</span><span class="hljs-number">.6</span>]-(b:Metro {name: <span
+                        class="hljs-string">'NYC'</span>})
 WITH paths, relationships(paths) <span class="hljs-keyword">AS</span> rels
-	where all(rel IN rels WHERE rel.status = <span class="hljs-string">'ACTIVE'</span>)
+                    where all(rel IN rels WHERE coalesce(rel.status, 'ACTIVE') = 'ACTIVE')
 UNWIND rels <span class="hljs-keyword">AS</span> rel
-WITH paths, collect(rel.travelTime) <span class="hljs-keyword">AS</span> streets, sum(rel.travelTime) <span
-                        class="hljs-keyword">AS</span> travelTime
-<span class="hljs-keyword">RETURN</span> extract (n IN nodes(paths) | n.name) <span class="hljs-keyword">AS</span> metros, streets, travelTime
-  ORDER BY travelTime;
+WITH [metro IN nodes(paths) | metro.name] <span class="hljs-keyword">AS</span> metros,
+     collect(rel.travelTime) <span class="hljs-keyword">AS</span> streets,
+     sum(rel.travelTime) <span class="hljs-keyword">AS</span> travelTime
+  ORDER BY travelTime
+<span class="hljs-keyword">RETURN</span> metros, streets, travelTime
 </code></pre>
-            <p>We can see that:</p>
-            <ul class="bulletList">
-                <li>Travel time increases 29.6 minutes</li>
-                <li>The best route is now via Intramuros, St Germain and China Town.</li>
-            </ul>
+                <p>We can see that:</p>
+                <ul class="bulletList">
+                    <li>Travel time increases 29.6 minutes</li>
+                    <li>The best route is now via Intramuros, St Germain and China Town.</li>
+                </ul>
             </div>
 
             <h2 id="Conclusion">Conclusion</h2>
             <div class="border3">
-            <p>Today we learned how to use Neo4j to perform traffic routing.</p>
-            <p>There is a lot more that we could do, however I would like <em>you</em> to think about it, and
-                see where it leads
-                you. How would you extend the model? Maybe handling delays? Turn by turn directions? What about
-                performance
-                concerns with much larger datasets?</p>
-            <p>Have a try for yourself and tweet your discoveries to <strong><a
-                    href="https://twitter.com/doctor_cerulean"
-                    target="_blank" rel="noopener">@doctor_cerulean</a></strong>
-                hashtag <strong><a
-                        href="https://twitter.com/search?f=tweets&amp;q=%23doctor-cerulean-liberates-your-data&amp;src=typd"
-                        target="_blank" rel="noopener">#doctor-cerulean-liberates-your-data</a></strong>.</p>
-            <p>We also learned today that:</p>
-            <ul class="bulletList">
-                <li>Neo4j is accessible. We can analyse network structures and solve real-world problems,
-                    without necessarily
-                    needing to know a lot about graph theory or combinatorics.
-                </li>
-                <li>Network structures have tremendous <em>plasticity</em>. We can enhance our model to
-                    encompass evolving
-                    requirements. And because Neo4j is transactional we can be assured of data consistency for
-                    large-scale,
-                    fluid networks. This is a powerful combination. In fact it makes Neo4j compelling for AI
-                    applications. We
-                    will explore that, with Moongirl, in a future post.
-                </li>
-            </ul>
-            <p>Please stay tuned for the next instalment. I hope that you enjoyed this one! If you did, why not
-                tell your friends about the fun that can be had when <strong><a
-                        href="https://twitter.com/search?f=tweets&amp;q=%23doctor-cerulean-liberates-your-data&amp;src=typd"
-                        target="_blank" rel="noopener">#doctor-cerulean-liberates-your-data</a></strong>.</p>
-            <p>Thanks a lot! <img alt=":metal:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/metal.png" title=":metal:"></p>
+                <p>Today we learned how to use Neo4j to perform traffic routing.</p>
+                <p>There is a lot more that we could do, however I would like <em>you</em> to think about it, and
+                    see where it leads
+                    you. How would you extend the model? Maybe handling delays? Turn by turn directions? What about
+                    performance
+                    concerns with much larger datasets?</p>
+                <p>Have a try for yourself and tweet your discoveries to <strong><a
+                        href="https://twitter.com/doctor_cerulean"
+                        target="_blank" rel="noopener">@doctor_cerulean</a></strong>
+                    hashtag <strong><a
+                            href="https://twitter.com/search?f=tweets&amp;q=%23doctor-cerulean-liberates-your-data&amp;src=typd"
+                            target="_blank" rel="noopener">#doctor-cerulean-liberates-your-data</a></strong>.</p>
+                <p>We also learned today that:</p>
+                <ul class="bulletList">
+                    <li>Neo4j is accessible. We can analyse network structures and solve real-world problems,
+                        without necessarily
+                        needing to know a lot about graph theory or combinatorics.
+                    </li>
+                    <li>Network structures have tremendous <em>plasticity</em>. We can enhance our model to
+                        encompass evolving
+                        requirements. And because Neo4j is transactional we can be assured of data consistency for
+                        large-scale,
+                        fluid networks. This is a powerful combination. In fact it makes Neo4j compelling for AI
+                        applications. We
+                        will explore that, with Moongirl, in a future post.
+                    </li>
+                </ul>
+                <p>Please stay tuned for the next instalment. I hope that you enjoyed this one! If you did, why not
+                    tell your friends about the fun that can be had when <strong><a
+                            href="https://twitter.com/search?f=tweets&amp;q=%23doctor-cerulean-liberates-your-data&amp;src=typd"
+                            target="_blank" rel="noopener">#doctor-cerulean-liberates-your-data</a></strong>.</p>
+                <p>Thanks a lot! <img alt=":metal:" class="emoji"
+                                      src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/metal.png"
+                                      title=":metal:"></p>
             </div>
 
             <div dir="ltr" class="resize-sensor"
@@ -444,19 +461,20 @@ WITH paths, collect(rel.travelTime) <span class="hljs-keyword">AS</span> streets
         <script>
 
 
-        var disqus_config = function () {
-        this.page.url = "https://liberation-data.com/saxeburg-series/2018/11/28/rock-n-roll-traffic-routing.html";
-        this.page.identifier = "https://liberation-data.com/saxeburg-series/2018/11/28/rock-n-roll-traffic-routing.html";
-        };
+            var disqus_config = function () {
+                this.page.url = 'https://liberation-data.com/saxeburg-series/2018/11/28/rock-n-roll-traffic-routing.html';
+                this.page.identifier = 'https://liberation-data.com/saxeburg-series/2018/11/28/rock-n-roll-traffic-routing.html';
+            };
 
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://liberation-data-com-1.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://liberation-data-com-1.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
     </div>
 
 
